@@ -2,7 +2,7 @@ import streamlit as st
 
 #...PAGE SETUP...
 home = st.Page(
-  page = "",
+  page = "home",
   title = "",
   icon = "",
   default = True)
