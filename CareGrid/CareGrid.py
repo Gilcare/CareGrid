@@ -6,7 +6,7 @@ def main():
   
   if app == "🏠Home":
     st.text_input("Search Files")
-    reg_px, view_ehr  = st.column(2, vertical_alignment = "bottom" )
+    reg_px, view_ehr  = st.columns(2, vertical_alignment = "bottom" )
     reg_px.button("Register New Patient")
     view_ehr.button("Access Patient's Records")
 
