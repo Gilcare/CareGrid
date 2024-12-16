@@ -3,7 +3,7 @@ import streamlit as st
 #...APP INTERFACE...
 
 st.markdown("<h1 style='text-align: center;'>🪢CareGrid</h1>", unsafe_allow_html = True)
-st.caption("_wELCOME TO THE FUTURE OF HEALTHCARE_")
+#st.caption("_wELCOME TO THE FUTURE OF HEALTHCARE_")
 
 def main():
   app = st.sidebar.selectbox("Menu",("🏠Home","🗓️Schedule Appointment","🧩About"))
