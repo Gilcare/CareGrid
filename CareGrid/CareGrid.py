@@ -12,8 +12,12 @@ def landing_page():
 
   
   if app == "🗓️Schedule Appointment":
-    st.caption(⚠️
-    appointment = st.date_input("")
+    st.caption(":calender: _Schedule An Appointment With Your Doctor_")
+    appointment = st.date_input("Enter Date")
+
+if "__name__" = landing_page:
+  landing_page()
+    
     
     
     
