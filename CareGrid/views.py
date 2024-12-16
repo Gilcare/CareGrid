@@ -6,3 +6,5 @@ home = st.Page(
   title = "",
   icon = "",
   default = True)
+
+Home
