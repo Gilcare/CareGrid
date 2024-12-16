@@ -15,9 +15,10 @@ def landing_page():
     st.caption(":calender: _Schedule An Appointment With Your Doctor_")
     appointment = st.date_input("Enter Date")
 
-if "__name__" = landing_page:
+if __name__ == "__landing_page__":
   landing_page()
-    
+
+
     
     
     
