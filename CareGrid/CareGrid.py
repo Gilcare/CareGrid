@@ -2,7 +2,7 @@ import datetime
 import streamlit as st
 #...APP INTERFACE...
 
-st.tittle("CareGrid")
+st.title("CareGrid")
 st.caption("_wELCOME TO THE FUTURE OF HEALTHCARE_")
 
 def main():
