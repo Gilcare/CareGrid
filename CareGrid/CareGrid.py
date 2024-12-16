@@ -12,7 +12,7 @@ def main():
 
   
   if app == "🗓️Schedule Appointment":
-    st.caption(":calender: _Schedule An Appointment With Your Doctor_")
+    st.caption(":calender:_Schedule An Appointment With Your Doctor_")
     appointment = st.date_input("Enter Date")
 
 if __name__ == "__main__":
