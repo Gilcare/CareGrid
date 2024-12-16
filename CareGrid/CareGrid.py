@@ -16,3 +16,10 @@ about = st.Page(
   title = "about",
   icon = "🧩",
   )
+
+
+#...NAVIGATION SETUP...
+pg = st.navigation(pages = [home,user,about])
+
+#...RUN NAVIGATION...
+pg.run()
