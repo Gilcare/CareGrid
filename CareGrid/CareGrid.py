@@ -32,9 +32,10 @@ def main():
 
         submitted = st.form_submit_button("Submit")
         if submitted:
-          st.write("Details Uploaded")
+          st.success("Patient's Details Have Been Uploaded")
 
-      st.success("Patient's Details Have Been Uploaded")
+
+      #
 
   
   if app == "🗓️Schedule Appointment":
