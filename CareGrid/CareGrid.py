@@ -24,7 +24,17 @@ def main():
         patient_name = st.text_input("Name")
         patient_age = st.number_input("Age")
         patient_sex = st.checkbox("Male")
-      
+        patient_occupation = st.text_input("Occupation")
+        patient_address = st.text_input("Address")
+        patient_religion = st.text_input("Religion")
+        patient_origin = st.text_input("Place of origin")
+        ward = st.text_input("Ward")
+
+        submitted = st.form_submit_button("Submit")
+        if submitted:
+          st.write("Details Uploaded")
+
+      st.success("Patient's Details Have Been Uploaded")
 
   
   if app == "🗓️Schedule Appointment":
