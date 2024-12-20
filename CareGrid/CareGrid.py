@@ -1,4 +1,5 @@
 import datetime
+import random
 import streamlit as st
 #...APP INTERFACE...
 
@@ -33,6 +34,7 @@ def main():
 
         submitted = st.form_submit_button("Submit")
         if submitted:
+          patient_id = random.randint(100000,999999)
           st.success("Patient's Details Have Been Uploaded")
 
 
