@@ -34,8 +34,11 @@ def main():
 
         submitted = st.form_submit_button("Submit")
         if submitted:
+          #...GENERATE A RANDOM 6 DIGIT NUMBER...
           patient_id = random.randint(100000,999999)
-          st.success("Patient's Details Have Been Uploaded")
+          st.success(f"Patient registered successfully! Patient ID: {patient_id}")
+
+
 
 
       #
