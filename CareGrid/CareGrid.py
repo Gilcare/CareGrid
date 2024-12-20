@@ -19,7 +19,7 @@ def main():
 
     
     if register_clicked:
-      #...INSERT CODE TO ASSIGN ID TO NEW PATIENT...
+      #...DISPLAY REGISTRATION FORM...
       with st.form(key = "Register Patient Details",clear_on_submit = False):
         st.subheader("Register Patient Details")
         patient_name = st.text_input("Name")
