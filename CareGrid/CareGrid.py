@@ -12,9 +12,12 @@ def main():
   if app == "🏠Home":
     st.text_input("Search Files")
     reg_px, view_ehr  = st.columns(2, vertical_alignment = "bottom" )
-    reg_px.button("Register New Patient")
+    
+    register_clicked = reg_px.button("Register New Patient")
     view_ehr.button("Access Patient's Records")
-    if reg_px.button("Register New Patient"):
+
+    
+    if register_clicked:
       #...INSERT CODE TO ASSIGN ID TO NEW PATIENT...
       with st.form(key = "Register Patient Details",clear_on_submit = True):
         st.subheader("Register Patient Details")
@@ -32,6 +35,3 @@ if __name__ == "__main__":
   main()
 
 
-    
-    
-    
