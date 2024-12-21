@@ -88,8 +88,9 @@ def main():
           ]
         )
         edited_drug_df = st.data_editor(drug_df, num_rows = "dynamic")
+        static_df = st.dataframe(edited_drug_df)
             
-      
+      st.dataframe(static_df)
     
 
 
