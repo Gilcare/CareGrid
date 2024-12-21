@@ -53,14 +53,25 @@ def main():
   
   if app == "🎨EHR":
     #... PATIENT'S DASHBOARD...
-    st.markdown("#### Patient's Details")
+    with st.expander("Patient's Details"):
+    col1, col2, col3 = st.columns(3)
+    col1.metric(label="Name", value="Adelaide Hawkins")
+    col2.metric(label="Age", value=29)
+    col3.metric(label="Sex", value="Female")
+    col4, col5 = st.columns(2)
+    col4.metric(label="Occupation", value="Realtor")
+    col5.metric(label="Ward", value="FMW")
+    col5.metric(label="🛑Drug Allergy", value="Rocephim")
+
+    
+    """st.markdown("#### Patient's Details")
     col1, col2, col3, col4, col5, col6 = st.columns(6)
     col1.metric(label = "Name", value = "Adelaide Hawkins")
     col2.metric(label = "Age", value = 29)
     col3.metric(label = "Sex", value = "Female")
     col4.metric(label = "Occupation", value = "Realtor")
     col5.metric(label = "Ward", value = "FMW")
-    col5.metric(label = "🛑Drug Allergy", value = "Rocephim")
+    col5.metric(label = "🛑Drug Allergy", value = "Rocephim")"""
     
     
     st.write("")
