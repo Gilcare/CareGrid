@@ -8,7 +8,7 @@ st.markdown("<h1 style='text-align: center;'>🪢CareGrid</h1>", unsafe_allow_ht
 st.divider()
 
 def main():
-  app = st.sidebar.selectbox("Menu",("🏠Home","🗓️Schedule Appointment","🧩About"))
+  app = st.sidebar.selectbox("Menu",("🏠Home","🗓️Schedule Appointment","EHR","🧩About"))
   
   if app == "🏠Home":
     st.text_input("Search Files")
@@ -45,7 +45,10 @@ def main():
   
   if app == "🗓️Schedule Appointment":
     st.caption(":date: _Schedule An Appointment With Your Doctor_")
-    appointment = st.date_input("Enter Date")
+    appointment = st.date_input("Enter Date") 
+
+if app == "EHR":
+  st.audio_input()
 
 if __name__ == "__main__":
   main()
