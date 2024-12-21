@@ -58,8 +58,13 @@ def main():
     col3.metric(label = "Sex", value = "Male")
     col4.metric(label = "Occupation", value = "BioWare")
     col5.metric(label = "Ward", value = "FMW")
+
     #...TAKE CLINICAL NOTES
-    clinical_audio_note = st.audio_input("Record Clinical Notes")
+    clinical_text_note = st.text_input("Clinical Notes(⌨️Type)")
+
+    
+    #...TAKE CLINICAL NOTES
+    clinical_audio_note = st.audio_input("Clinical Notes(🎙️Audio)")
     if clinical_audio_note:
       st.audio(clinical_audio_note)
 
