@@ -7,7 +7,7 @@ An open source EHR application built with Streamlit
 # 📋 CareGrid - A Modern Open Source EHR System  
 *Effortlessly manage healthcare data with a simple, intuitive, and secure platform.*
 
-![Streamlit Banner](https://user-images-placeholder.com/banner-image)
+![Streamlit Banner](CareGrid/Streamlit.jpg)
 
 ## 🌟 Features  
 - **User-Friendly Interface**: Designed with simplicity in mind, powered by Streamlit for a seamless experience.  
