@@ -53,7 +53,7 @@ def main():
     #... PATIENT'S DASHBOARD...
     st.markdown("### Patient's Details")
     col1, col2, col3, col4, col5 = st.columns(5)
-    col1.metric(label = "Adelaide Hawkins")
+    col1.metric(label = "Adelaide Hawkins", value = "Name")
     col2.metric(label = "Age") #value = patient_age)
     col3.metric(label = "Sex") #value = )
     col4.metric(label = "Occupation")  #value = patient_occupation)
