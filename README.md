@@ -1,2 +1,2 @@
 # CareGrid
-An open sourced EHR/HMS application built with Streamlit
+An open source EHR/HMS application built with Streamlit
