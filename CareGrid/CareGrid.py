@@ -73,7 +73,7 @@ def main():
       st.audio(clinical_audio_note)
     
     #...PATIENT'S LABORATORY, MEDICAL IMAGING RESULTS, & PRESCRIPTIONS
-    tabs1,tabs2 = st.tabs(["Laboratory Results", "Medical Imaging Results","Prescriptions"])
+    tabs1,tabs2,tabs3= st.tabs(["Laboratory Results", "Medical Imaging Results","Prescriptions"])
     with tabs1:
       st.write("Labs")
     with tabs2:
