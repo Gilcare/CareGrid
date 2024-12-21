@@ -74,11 +74,11 @@ def main():
     #...PATIENT'S LABORATORY & MEDICAL IMAGING RESULTS
     tabs1,tabs2 = st.tabs(["Laboratory Results", "Medical Imaging Results"])
     with tabs1:
-      st.
+      st.write("Labs")
     with tabs2:
       st.image("CareGrid/CT-abdomen-400x267.jpg")
       st.image("CareGrid/CT-scan-shows.jpg")
-      st.image("")
+      st.image("CareGrid/CT_AdobeStock_213100426-768x577.jpeg")
     
 
 
