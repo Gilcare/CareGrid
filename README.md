@@ -99,7 +99,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 For inquiries, feedback, or support, reach out:  
 
-- **Email**: support@openehr.com  
+- **Email**: gilcare.com@gmail.com  
 - **GitHub Issues**: [Report a Bug](https://github.com/Gilcare/CareGrid/issues)  
 
 ---
