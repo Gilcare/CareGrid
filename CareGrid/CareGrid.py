@@ -48,6 +48,7 @@ def main():
     appointment = st.date_input("Enter Date") 
 
 if app == "EHR":
+  take_audio_notes = 
   st.audio_input()
 
 if __name__ == "__main__":
