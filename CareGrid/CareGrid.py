@@ -80,6 +80,8 @@ def main():
       st.image("CareGrid/CT-scan-shows.jpg")
       st.image("CareGrid/CT_AdobeStock_213100426-768x577.jpeg")
     with tabs3:
+      with st.popover("Prescribe Drugs"):
+        
       
     
 
