@@ -1,4 +1,5 @@
 import datetime
+import pandas as pd
 import random
 import streamlit as st
 #...APP INTERFACE...
@@ -81,9 +82,16 @@ def main():
       st.image("CareGrid/CT_AdobeStock_213100426-768x577.jpeg")
     with tabs3:
       with st.popover("Prescribe Drugs"):
-        
+        drug_df = pd.DataFrame(
+          [
+            {"Drugs":"Ibuprofen","Dosage(mg)":"100","Frequency Of Administration":"b.d"}
+          ]
+        )
+        edited_drug_df = st.data_editor(drug_df, num_rows = "dynamic")
+            
       
     
+
 
 
 
