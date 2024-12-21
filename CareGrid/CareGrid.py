@@ -71,14 +71,16 @@ def main():
     if clinical_audio_note:
       st.audio(clinical_audio_note)
     
-    #...PATIENT'S LABORATORY & MEDICAL IMAGING RESULTS
-    tabs1,tabs2 = st.tabs(["Laboratory Results", "Medical Imaging Results"])
+    #...PATIENT'S LABORATORY, MEDICAL IMAGING RESULTS, & PRESCRIPTIONS
+    tabs1,tabs2 = st.tabs(["Laboratory Results", "Medical Imaging Results","Prescriptions")
     with tabs1:
       st.write("Labs")
     with tabs2:
       st.image("CareGrid/CT-abdomen-400x267.jpg")
       st.image("CareGrid/CT-scan-shows.jpg")
       st.image("CareGrid/CT_AdobeStock_213100426-768x577.jpeg")
+    with tabs3:
+      
     
 
 
