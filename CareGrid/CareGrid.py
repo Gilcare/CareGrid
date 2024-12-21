@@ -55,7 +55,7 @@ def main():
     col1, col2, col3, col4, col5 = st.columns(5)
     col1.metric(label = "Name", value = "Adelaide Hawkins")
     col2.metric(label = "Age", value = 35)
-    col3.metric(label = "Sex", value = "Male")
+    col3.metric(label = "Sex", value = "Female")
     col4.metric(label = "Occupation", value = "BioWare")
     col5.metric(label = "Ward", value = "FMW")
 
