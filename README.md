@@ -1,7 +1,6 @@
 # CareGrid
 An open source EHR application built with Streamlit
 
-Here’s a polished and aesthetic README for an open-source Electronic Health Record (EHR) system built using Streamlit:  
 
 ---
 
