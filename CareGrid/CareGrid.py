@@ -45,11 +45,27 @@ def main():
   
   if app == "🗓️Schedule Appointment":
     st.caption(":date: _Schedule An Appointment With Your Doctor_")
-    appointment = st.date_input("Enter Date") 
+    appointment = st.date_input("Enter Date")
 
-if app == "EHR":
-  take_audio_notes = 
-  st.audio_input()
+
+  
+   if app == "EHR":
+      #... PATIENT'S DASHBOARD...
+      st.markdown("### Patient's Details")
+      col1, col2, col3, col4 = st.columns(5)
+      col1.metric(label = "Adelaide Hawkins")
+      col2.metric(label = "Age") #value = patient_age)
+      col3.metric(label = "Sex") #value = )
+      col4.metric(label = "Occupation")  #value = patient_occupation)
+
+      #...TAKE CLINICAL NOTES
+      clinical_audio_note = st.audio_input("Record Clinical Notes")
+      if clinical_audio_note:
+        st.audio(clinical_audio_note)
+
+
+
+
 
 if __name__ == "__main__":
   main()
