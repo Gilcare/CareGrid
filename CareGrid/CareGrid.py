@@ -76,7 +76,7 @@ def main():
     with tabs1:
       st.
     with tabs2:
-      st.image("https://images.app.goo.gl/dq68ePfMeS8Tkua8A")
+      st.image("CareGrid/CT-abdomen-400x267.jpg")
       st.image("https://images.app.goo.gl/3QazxApJiKsKPQAz5")
     
 
