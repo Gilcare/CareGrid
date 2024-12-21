@@ -62,6 +62,7 @@ def main():
     #...TAKE CLINICAL NOTES
     clinical_text_note = st.text_input("Clinical Notes(⌨️Type)")
 
+    st.write("")
     
     #...TAKE CLINICAL NOTES
     clinical_audio_note = st.audio_input("Clinical Notes(🎙️Audio)")
