@@ -70,6 +70,15 @@ def main():
     clinical_audio_note = st.audio_input("Clinical Notes(🎙️Audio)")
     if clinical_audio_note:
       st.audio(clinical_audio_note)
+    
+    #...PATIENT'S LABORATORY & MEDICAL IMAGING RESULTS
+    tabs1,tabs2 = st.tabs(["Laboratory Results", "Medical Imaging Results"])
+    with tabs1:
+      st.
+    with tabs2:
+      st.image("https://images.app.goo.gl/dq68ePfMeS8Tkua8A")
+      st.image("https://images.app.goo.gl/3QazxApJiKsKPQAz5")
+    
 
 
 
