@@ -1,4 +1,5 @@
 import datetime
+import numpy as np
 import pandas as pd
 import random
 import streamlit as st
@@ -76,7 +77,11 @@ def main():
     #...PATIENT'S LABORATORY, MEDICAL IMAGING RESULTS, & PRESCRIPTIONS
     tabs1,tabs2,tabs3= st.tabs(["Laboratory Results", "Medical Imaging Results","Prescriptions"])
     with tabs1:
-      st.write("Labs")
+      st.write("")
+      lab_df = pd.DataFrame(
+            np.random.randn(10, 5), columns=("col %d" % i for i in range(5))
+               )
+      st.table(lab_df)
     with tabs2:
       st.image("CareGrid/CT-abdomen-400x267.jpg")
       st.image("CareGrid/CT-scan-shows.jpg")
