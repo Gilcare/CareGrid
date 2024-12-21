@@ -8,7 +8,7 @@ st.markdown("<h1 style='text-align: center;'>🪢CareGrid</h1>", unsafe_allow_ht
 st.divider()
 
 def main():
-  app = st.sidebar.selectbox("Menu",("🏠Home","🗓️Schedule Appointment","EHR","🧩About"))
+  app = st.sidebar.selectbox("Menu",("🏠Home","🗓️Schedule Appointment","🎨EHR","🧩About"))
   
   if app == "🏠Home":
     st.text_input("Search Files")
@@ -49,7 +49,7 @@ def main():
 
 
   
-  if app == "EHR":
+  if app == "🎨EHR":
     #... PATIENT'S DASHBOARD...
     st.markdown("### Patient's Details")
     col1, col2, col3, col4 = st.columns(5)
@@ -57,7 +57,7 @@ def main():
     col2.metric(label = "Age") #value = patient_age)
     col3.metric(label = "Sex") #value = )
     col4.metric(label = "Occupation")  #value = patient_occupation)
-
+    col5.metric(label = "Ward") #value = ward
     #...TAKE CLINICAL NOTES
     clinical_audio_note = st.audio_input("Record Clinical Notes")
     if clinical_audio_note:
