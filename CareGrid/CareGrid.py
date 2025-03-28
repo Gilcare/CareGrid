@@ -1,111 +1,46 @@
-import datetime
-import numpy as np
-import pandas as pd
-import random
 import streamlit as st
-#...APP INTERFACE...
+from streamlit_auth0 import Auth0Login
 
-st.markdown("<h1 style='text-align: center;'>🪢CareGrid</h1>", unsafe_allow_html = True)
-#st.caption("_WELCOME TO THE FUTURE OF HEALTHCARE_")
-st.divider()
+# Initialize Auth0
+auth0 = Auth0Login(
+    domain="YOUR_AUTH0_DOMAIN",  # e.g., dev-abc123.us.auth0.com
+    client_id="YOUR_AUTH0_CLIENT_ID",
+    client_secret="YOUR_AUTH0_CLIENT_SECRET",  # Optional for server-side authentication
+    redirect_uri="http://localhost:8501",  # Adjust based on deployment
+)
 
 def main():
-  app = st.sidebar.selectbox("Menu",("🏠Home","🗓️Schedule Appointment","🎨EHR","🧩About"))
-  
-  if app == "🏠Home":
-    st.text_input("Search Files")
-    reg_px, view_ehr  = st.columns(2, vertical_alignment = "bottom" )
+    # ====== Login/Logout with Auth0 ======
+    auth0.auth()
     
-    register_clicked = reg_px.button("Register New Patient")
-    view_ehr.button("Access Patient's Records")
+    # Check authentication status
+    if not auth0.is_authenticated():
+        st.write("Please log in to continue.")
+        return
 
+    user_info = auth0.get_user_info()
     
-    if register_clicked:
-      #...DISPLAY REGISTRATION FORM...
-      with st.form(key = "Register Patient Details",clear_on_submit = False):
-        st.subheader("Register Patient Details")
-        patient_name = st.text_input("Name")
-        patient_age = st.text_input("Age")
-        patient_sex1 = st.checkbox("Male")
-        patient_sex2 = st.checkbox("Female")
-        patient_occupation = st.text_input("Occupation")
-        patient_address = st.text_input("Address")
-        patient_religion = st.text_input("Religion")
-        patient_origin = st.text_input("Place of origin")
-        ward = st.text_input("Ward")
-        submitted = st.form_submit_button("Submit")
-        if submitted:
-          #...GENERATE A RANDOM 6 DIGIT NUMBER...
-          patient_id = random.randint(100000,999999)
-          st.success(f"Patient registered successfully! Patient ID: {patient_id}")
-
-
-
-
-      #
-
-  
-  if app == "🗓️Schedule Appointment":
-    st.caption(":date: _Schedule An Appointment With Your Doctor_")
-    appointment = st.date_input("Enter Date")
-
-
-  
-  if app == "🎨EHR":
-    #... PATIENT'S DASHBOARD...
-    with st.expander("Patient's Details"):
-      col1, col2, col3 = st.columns(3)
-      col1.metric(label="Name", value="Adelaide Hawkins")
-      col2.metric(label="Age", value=29)
-      col3.metric(label="Sex", value="Female")
-      col4, col5 = st.columns(2)
-      col4.metric(label="Occupation", value="Realtor")
-      col5.metric(label="Ward", value="FMW")
-      col5.metric(label="🛑Drug Allergy", value="Rocephim")
-
+    # ====== UI ======
+    st.markdown("<h1 style='text-align: center; color: white;'>CareGrid</h1>", unsafe_allow_html=True)
+    st.divider()
+    st.markdown(f"<p style='text-align: center; font-size: small; color: white;'>Welcome, {user_info['name']}!</p>", unsafe_allow_html=True)
     
-   
-    st.write("")
+    # User role selection
+    left, middle, right = st.columns(3, vertical_alignment="bottom")
     
-    
-    #...TAKE CLINICAL NOTES
-    clinical_text_note = st.text_area("Clinical Notes(⌨️Type)")
+    if left.button("User", use_container_width=True):
+        st.session_state["role"] = "User"
+    if middle.button("Health personnel", use_container_width=True):
+        st.session_state["role"] = "Health personnel"
+    if right.button("Admin", use_container_width=True):
+        st.session_state["role"] = "Admin"
 
-    #...TAKE CLINICAL NOTES
-    clinical_audio_note = st.audio_input("Clinical Notes(🎙️Audio)")
-    if clinical_audio_note:
-      st.audio(clinical_audio_note)
-    
-    #...PATIENT'S LABORATORY, MEDICAL IMAGING RESULTS, & PRESCRIPTIONS
-    tabs1,tabs2,tabs3= st.tabs(["Laboratory Results", "Medical Imaging Results","Prescriptions"])
-    with tabs1:
-      st.write("")
-      lab_df = pd.DataFrame(
-            np.random.randn(10, 5), columns=("col %d" % i for i in range(5))
-               )
-      st.table(lab_df)
-    with tabs2:
-      st.image("CareGrid/CT-abdomen-400x267.jpg")
-      st.image("CareGrid/CT-scan-shows.jpg")
-      st.image("CareGrid/CT_AdobeStock_213100426-768x577.jpeg")
-    with tabs3:
-      with st.popover("Prescribe Drugs"):
-        drug_df = pd.DataFrame(
-          [
-            {"Drugs":"Ibuprofen","Dosage(mg)":"100","Frequency Of Administration":"b.d"}
-          ]
-        )
-        edited_drug_df = st.data_editor(drug_df, num_rows = "dynamic")
-        static_df = st.dataframe(edited_drug_df)
-        #st.dataframe(static_df)
-    
+    st.write(f"Logged in as: {st.session_state.get('role', 'None')}")
 
-
-
-
-
+    # Logout button
+    if st.button("Logout"):
+        auth0.logout()
 
 if __name__ == "__main__":
-  main()
-
-
+    main()
+      
