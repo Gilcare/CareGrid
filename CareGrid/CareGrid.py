@@ -3,7 +3,7 @@ from streamlit_auth0 import Auth0Login
 
 # Initialize Auth0
 auth0 = Auth0Login(
-    domain="YOUR_AUTH0_DOMAIN",  # e.g., dev-abc123.us.auth0.com
+    domain="dev-eop4nyjep0jldbpa.us.auth0.com",  # e.g., dev-abc123.us.auth0.com
     client_id="qWAYjIn8n9S5eXCeBy7NK7PMJkFFy9XH",
     client_secret="zJoToIvFBMLQanydubFELejk_JPrL3_P-cK192X732rlA4ydBalZ4fM0RBv-RJxx",  # Optional for server-side authentication
     redirect_uri="http://caregrid.streamlit.app/oauth2callback",  # Adjust based on deployment
