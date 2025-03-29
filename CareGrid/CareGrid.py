@@ -12,12 +12,15 @@ st.divider()
 
 #====== Login In By Role (2nd Access)======
 st.markdown("<p1> style = 'text-align: center;'>Continue As:</p1>", unsafe_allow_html = True)
-left,middle,right = st.columns(3, vertical_alignment = "bottom")
-left.button = ("User", use_container_width = True)
-middle.button = ("Health Personnel", use_container_width = True)
-right.button = ("Admin", use_container_width = True)
+left, middle, right = st.columns(3, vertical_alignment = "bottom")
+
+left.button("User", use_container_width = True)
+middle.button("Health Personnel", use_container_width = True)
+right.button("Admin", use_container_width = True)
 
 
 #app = 
 
 #st.caption("_WELCOME TO THE FUTURE OF HEALTHCARE")
+
+
