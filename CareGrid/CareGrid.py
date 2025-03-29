@@ -1,7 +1,6 @@
 import streamlit as st
 
-st.title("CareGrid")
-
+st.write("CareGrid")
 
 
 if not st.experimental_user.is_logged_in:
@@ -10,6 +9,6 @@ else:
     st.write(f"Hello, {st.experimental_user.name}!")
 
 
-
+st.write("CareGrid")
 
 
