@@ -3,13 +3,19 @@ import streamlit as st
 
 st.title("CareGrid")
 
-
+#====== Login In By Username & Password (1st Access)======
 if not st.experimental_user.is_logged_in:
     st.login("auth0")
 else:
     st.write(f"Hello, {st.experimental_user.name}!")
 st.divider()
+
+#====== Login In By Role (2nd Access)======
 st.markdown("<p1> style = 'text-align: center;'>Continue As:</p1>", unsafe_allow_html = True)
+left,middle,right = st.columns(3, vertical_alignment = "bottom")
+left.button = ("User", use_container_width = True)
+middle.button = ("Health Personnel", use_container_width = True)
+right.button = ("Admin", use_container_width = True)
 
 
 #app = 
