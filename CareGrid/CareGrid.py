@@ -8,7 +8,8 @@ if not st.experimental_user.is_logged_in:
 else:
     st.write(f"Hello, {st.experimental_user.name}!")
 
-st.markdown("Continue As:")
+st.markdown("<p1> style = 'text-align: center;'>Continue As:</p1>", unsafe_allow_html = True)
 
-app = 
-    
+#app = 
+
+#st.caption("_WELCOME TO THE FUTURE OF HEALTHCARE")
