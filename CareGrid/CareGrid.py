@@ -1,13 +1,14 @@
 import streamlit as st
 
-st.write("Carly")
+st.title("CareGrid")
 
 
 if not st.experimental_user.is_logged_in:
     st.login("auth0")
 else:
-    if st.button("Log out"):
-        st.logout()
     st.write(f"Hello, {st.experimental_user.name}!")
 
-    st.title("Carly")
+st.markdown("Continue As:")
+
+app = 
+    
