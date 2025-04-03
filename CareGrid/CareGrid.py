@@ -17,6 +17,12 @@ st.divider()
 st.markdown("<p style='text-align: center;'>Continue As:</p>", unsafe_allow_html = True)
 left, middle, right = st.columns(3, vertical_alignment = "bottom")
 
+def login_form_by_role():
+    with st.form("Admin_Form"):
+        st.text_input()
+
+
+
 left.button("User", use_container_width = True)
 middle.button("Health Personnel", use_container_width = True)
 right.button("Admin", use_container_width = True)
