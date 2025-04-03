@@ -1,5 +1,7 @@
-
 import streamlit as st
+import pymongo
+
+from pymongo import MongoClient 
 
 st.markdown("<h1 style='text-align: center;'>🪢CareGrid</h1>", unsafe_allow_html = True)
 #st.caption("_WELCOME TO THE FUTURE OF HEALTHCARE_")
@@ -17,7 +19,7 @@ st.divider()
 st.markdown("<p style='text-align: center;'>Continue As:</p>", unsafe_allow_html = True)
 left, middle, right = st.columns(3, vertical_alignment = "bottom")
 
-def Admin_login_form():
+def admin_login_form():
     """Function To Enable Logging In As Admin (2nd Access)"""
     with st.form("Admin_Form"):
         admin_username = st.text_input("Username")
