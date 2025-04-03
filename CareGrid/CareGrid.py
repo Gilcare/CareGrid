@@ -16,6 +16,20 @@ else:
 st.divider()
 
 
+# MongoDB access
+database_access = st.secrets.mongo_db_key.conn_str
+
+# Instantiate client
+client =  MongoClient(database_access)
+                
+# Create DB
+login_db = client["Login_Database"]
+
+# Create Collections (Data Table | Symptom_Variables)
+credentials_collection = login_db["Credentials Data"]
+#symptom_collection = db["Symptom_Variables"]
+
+
 
 def healthworker_login_form():
     """Function To Enable Logging In Healthcare Worker(2nd Access)"""
@@ -34,7 +48,7 @@ def healthworker_login_form():
                     if not hw_details:
                         st.error("Invalid Username/Password")
                     else:
-            st.write("Access Granted")
+                        st.success("Access Granted")
 
 
 #====== Login In By Role (2nd Access)======
@@ -52,28 +66,7 @@ st.divider()
 #st.caption("_WELCOME TO THE FUTURE OF HEALTHCARE")
 
 
-def login_signup_page():
-    tab1, tab2, tab3 = st.tabs(["Login", "Sign-Up", "💕 Partner Console"])
 
-    with tab1:
-        with st.form(key="Login", clear_on_submit=True):
-            st.subheader("Login")
-            user = st.text_input("Username")
-            passkey = st.text_input("Password", type="password")
-
-            if st.form_submit_button("Login"):
-                if not user or not passkey:
-                    st.error("Enter both username and password")
-                else:
-                    user_details = collection.find_one({"Name": user, "Password": passkey})
-                    if not user_details:
-                        st.error("Invalid Username/Password")
-                    else:
-                        st.success("Login successful!")
-                        st.session_state.logged_in = True
-                        st.session_state.username = user
-                        st.session_state.need_to_enter_symptoms = False  # Reset state
-                        st.rerun()
 
     with tab2:
         with st.form(key="Sign Up", clear_on_submit=True):
