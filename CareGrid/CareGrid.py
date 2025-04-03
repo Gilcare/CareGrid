@@ -17,7 +17,7 @@ st.divider()
 st.markdown("<p style='text-align: center;'>Continue As:</p>", unsafe_allow_html = True)
 left, middle, right = st.columns(3, vertical_alignment = "bottom")
 
-def login_form_by_role():
+def Admin_login_form():
     with st.form("Admin_Form"):
         st.text_input()
 
