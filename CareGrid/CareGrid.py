@@ -31,6 +31,9 @@ def healthworker_login_form():
                     st.error("Enter Username & Password")
                 else:
                     hw_details = credentials_collection.find_one({"Username": healthworker_username, "Password": healthworker_password})
+                    if not hw_details:
+                        st.error("Invalid Username/Password")
+                    else:
             st.write("Access Granted")
 
 
