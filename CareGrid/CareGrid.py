@@ -15,22 +15,24 @@ else:
     st.write(f"Hello, {st.experimental_user.name}!")
 st.divider()
 
-#====== Login In By Role (2nd Access)======
-st.markdown("<p style='text-align: center;'>Continue As:</p>", unsafe_allow_html = True)
-left, middle, right = st.columns(3, vertical_alignment = "bottom")
 
-def admin_login_form():
-    """Function To Enable Logging In As Admin (2nd Access)"""
-    with st.form("Admin_Form"):
-        admin_username = st.text_input("Username")
-        admin_password = st.text_input("Password", "password")
+
+def healthworker_login_form():
+    """Function To Enable Logging In Healthcare Worker(2nd Access)"""
+    with st.form(key = "Healthworker_Form", clear_on_submit = True):
+        healthworker_username = st.text_input("Username")
+        healthworker_password = st.text_input("Password", type =["password")
         submitted = st.form_submit_button("Submit")
         if submitted:
+            if not healthworker_username or not healthworker_password:
+                st.error("Invalid Username/Password")
+            else:
             st.write("Access Granted")
 
 
-
-
+#====== Login In By Role (2nd Access)======
+st.markdown("<p style='text-align: center;'>Continue As:</p>", unsafe_allow_html = True)
+left, middle, right = st.columns(3, vertical_alignment = "bottom")
 left.button("User", use_container_width = True)
 middle.button("Health Personnel", use_container_width = True)
 right.button("Admin", use_container_width = True)
