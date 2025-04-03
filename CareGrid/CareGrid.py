@@ -18,8 +18,14 @@ st.markdown("<p style='text-align: center;'>Continue As:</p>", unsafe_allow_html
 left, middle, right = st.columns(3, vertical_alignment = "bottom")
 
 def Admin_login_form():
+    """Function To Enable Logging In As Admin (2nd Access)"""
     with st.form("Admin_Form"):
-        st.text_input()
+        admin_username = st.text_input("Username")
+        admin_password = st.text_input("Password", "password")
+        submitted = st.form_submit_button("Submit")
+        if submitted:
+            st.write("Access Granted")
+
 
 
 
