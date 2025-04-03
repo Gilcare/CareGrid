@@ -34,6 +34,32 @@ credentials_collection = login_db["Credentials Data"]
 def healthworker_login_form():
     """Function To Enable Logging In Healthcare Worker(2nd Access)"""
     access_records, sign_up = st.tabs(["Access Records","Request Access"])
+
+    with sign_up:
+        with st.form(key="Sign Up", clear_on_submit=True):
+            st.subheader("Sign-Up")
+            hw_username = st.text_input("Username")
+            hw_email = st.text_input("Email")
+            hw_unit = st.text_input("Unit...e.g: Dermatology")
+            hw_title = st.text_input("e.g: Dr")
+            hw_rank = st.text_input("e.g: Consultant/Matron etc")
+            hw_password = st.text_input("Password", type="password")
+            hospital_name = st.text_input("Hospital Name")
+            hospital_country = st.text_input("Country where hospital is located")
+            hospital_province = st.text_input("Province/State/County/District Hospital is located")
+
+            if st.form_submit_button("Create Account"):
+                if not hw_username or not hw_email or not hw_password:
+                    st.error("Please fill in all fields.")
+                else:
+                    if collection.find_one({"$or": [{"Name": hw_username}, {"Email": hw_email}]}):
+                        st.error("Username or Email already exists.")
+                    else:
+                        data = {"Name": hw_username, "Email": hw_email, "Password": hw_password}
+                        #added_doc = collection.insert_one(data)
+                        st.success("Account Created. Awaiting Approval From Hospital EHR Admin")
+
+    
     with access_records:
         with st.form(key = "Healthworker_Form", clear_on_submit = True):
             st.subheader("Access Health Records")
@@ -68,30 +94,4 @@ st.divider()
 
 
 
-    with tab2:
-        with st.form(key="Sign Up", clear_on_submit=True):
-            st.subheader("Sign-Up")
-            username = st.text_input("Username")
-            email = st.text_input("Email")
-            password = st.text_input("Password", type="password")
-
-            if st.form_submit_button("Create Account"):
-                if not username or not email or not password:
-                    st.error("Please fill in all fields.")
-                elif not validate_username(username):
-                    st.error("Username can only contain letters and numbers.")
-                elif not validate_email(email):
-                    st.error("Please enter a valid email address.")
-                elif len(password) < 6:
-                    st.error("Password must be at least 6 characters long.")
-                else:
-                    if collection.find_one({"$or": [{"Name": username}, {"Email": email}]}):
-                        st.error("Username or Email already exists.")
-                    else:
-                        data = {"Name": username, "Email": email, "Password": password}
-                        added_doc = collection.insert_one(data)
-                        st.success("Account Created")
-                        st.session_state.logged_in = True
-                        st.session_state.username = username
-                        st.session_state.need_to_enter_symptoms = True  # Set state to enter symptoms
-                        st.rerun()
+    
