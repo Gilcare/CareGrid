@@ -11,9 +11,9 @@ def healthworker_login_form():
             hw_username = st.text_input("Username")
             hw_email = st.text_input("Email")
             hw_password = st.text_input("Password", type="password")
-            hw_unit = st.text_input("Unit (e.g., Dermatology)")
-            hw_title = st.text_input("Title (e.g., Dr)")
-            hw_rank = st.text_input("Rank (e.g., Consultant/Matron)")
+            hw_unit = st.text_input("Unit (e.g: Dermatology)")
+            hw_title = st.text_input("Title (e.g: Dr)")
+            hw_rank = st.text_input("Rank (e.g: Snr. Resident/Matron)")
             hospital_name = st.text_input("Hospital Name")
             hospital_country = st.text_input("Country where hospital is located")
             hospital_province = st.text_input("Province/State/County/District Hospital is located")
@@ -58,4 +58,9 @@ def healthworker_login_form():
 
 
 st.write("Welcome Physician")
-healthworker_login_form()
+#healthworker_login_form() 
+
+
+def add_new_patient():
+    with
+    st.button("Add New Patient")
