@@ -1,9 +1,5 @@
 import streamlit as st
 
-st.write("Welcome Physician")
-
-
-
 # Function for health personnel login and registration
 def healthworker_login_form():
     """Function to enable logging in healthcare worker (2nd Access)"""
@@ -59,3 +55,7 @@ def healthworker_login_form():
                         st.error("Invalid Username/Password")
                     else:
                         st.success("Access Granted")
+
+
+st.write("Welcome Physician")
+healthworker_login_form()
