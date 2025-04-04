@@ -1,4 +1,7 @@
+import datetime
+import numpy as np
 import pandas as pd
+import random
 import streamlit as st
 
 # Function for health personnel login and registration
@@ -94,9 +97,16 @@ def patient_record():
         lab_df = pd.DataFrame(np.random.randn(10, 5), columns=("col %d" % i for i in range(5)))
         st.table(lab_df)
     with medical_images:
-        st.image("CareGrid/CT-abdomen-400x267.jpg")
-        st.image("CareGrid/CT-scan-shows.jpg")
-        st.image("CareGrid/CT_AdobeStock_213100426-768x577.jpeg")
+        upload_medical_imaging_files = st.file_uploader("Upload Medical Images",accept_multiple_files = True)
     with other_details:
         st.write("Add Insurance Details Here")
+
+
+
+
+
+
+
+st.write("Welcome")
+patient_record()
         #st.dataframe(static_df)
