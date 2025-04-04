@@ -1,4 +1,4 @@
-import pandas 
+import pandas as pd
 import streamlit as st
 
 # Function for health personnel login and registration
@@ -58,8 +58,6 @@ def healthworker_login_form():
                         st.success("Access Granted")
 
 
-st.write("Welcome Physician")
-#healthworker_login_form() 
 
 
 def add_new_patient_with_ocr():
@@ -80,7 +78,7 @@ def patient_record():
     if search:
         patient_database.find_one({"Patient's Name": search_name})
 
-    lab_investigation, medical_images, other_details = st.tabs(["clinic_note", "lab_investigation", "medical_images", "other_details"])
+   
 
     # Take Clinic Notes By Typing
     clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
@@ -89,6 +87,16 @@ def patient_record():
     if clinic_notes_audio:
         st.audio(clinic_notes_audio)
         """Write Code To Convert Into Text"""
-            
-    with lab_investigation:
+
+    lab_investigation, medical_images, other_details = st.tabs(["lab_investigation", "medical_images", "other_details"])
         
+    with lab_investigation:
+        lab_df = pd.DataFrame(np.random.randn(10, 5), columns=("col %d" % i for i in range(5)))
+        st.table(lab_df)
+    with medical_images:
+        st.image("CareGrid/CT-abdomen-400x267.jpg")
+        st.image("CareGrid/CT-scan-shows.jpg")
+        st.image("CareGrid/CT_AdobeStock_213100426-768x577.jpeg")
+    with other_details:
+        st.write("Add Insurance Details Here")
+        #st.dataframe(static_df)
