@@ -61,6 +61,22 @@ st.write("Welcome Physician")
 #healthworker_login_form() 
 
 
-def add_new_patient():
-    """Use OCR To Extract Details From Patient ID"""
-    scan_patient_id = st.camera to
+def add_new_patient_with_ocr():
+    """Use OCR To Extract Details From Patient ID And Register Patient's Details In EHR System"""
+    enable_camera = st.checkbox("Enable Camera")
+    scan_patient_id = st.camera_input("Scan Patient's ID To Fill Details", disabled = not enable_camera)
+    if scan_patient_id:
+        st.image(scan_patient_id)
+
+def add_new_patient_typing():
+    """Add Patient's Details By Typing"""
+
+def patient_record():
+    st.write("Find Patient's Record")
+    search_name = st.text_input("Enter Patient's Name")
+    if search:
+        patient_database.find_one({"Patient's Name": search_name})
+
+    with:
+        clinic_note, lab_investigation, medical_images, other_details = st.tabs(["clinic_note", "lab_investigation", "medical_images", "other_details"])
+   
