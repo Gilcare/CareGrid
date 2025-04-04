@@ -91,13 +91,13 @@ def patient_record():
         st.audio(clinic_notes_audio)
         """Write Code To Convert Into Text"""
 
-    lab_investigation, medical_images, other_details = st.tabs(["lab_investigation", "medical_images", "other_details"])
-        
+    medical_images, lab_investigation, other_details = st.tabs(["lab_investigation", "medical_images", "other_details"])
+
+    with medical_images:
+        upload_medical_imaging_files = st.file_uploader("Upload Medical Images",accept_multiple_files = True)
     with lab_investigation:
         lab_df = pd.DataFrame(np.random.randn(10, 5), columns=("col %d" % i for i in range(5)))
         st.table(lab_df)
-    with medical_images:
-        upload_medical_imaging_files = st.file_uploader("Upload Medical Images",accept_multiple_files = True)
     with other_details:
         st.write("Add Insurance Details Here")
 
