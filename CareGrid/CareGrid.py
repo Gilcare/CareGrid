@@ -119,7 +119,7 @@ def healthworker_login_form():
 
 
 """def healthworker_login_form():
-    """Function To Enable Logging In Healthcare Worker(2nd Access)"""
+    #Function To Enable Logging In Healthcare Worker(2nd Access)
     access_records, sign_up = st.tabs(["Access Records","Request Access"])
 
     with sign_up:
