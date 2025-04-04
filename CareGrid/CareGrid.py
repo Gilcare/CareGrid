@@ -40,7 +40,7 @@ def navigate_to(role):
     if role == "User":
         st.switch_page("pages/user_dashboard.py")
     elif role == "Health Personnel":
-        st.switch_page("pages/health_personnel_dashboard.py")
+        st.switch_page("CareGrid/health_personel_dashboard.py")
     elif role == "Admin":
         st.switch_page("pages/admin_dashboard.py")
 
