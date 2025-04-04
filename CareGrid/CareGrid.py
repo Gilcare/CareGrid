@@ -17,7 +17,7 @@ st.divider()
 
 
 # MongoDB access
-database_access = st.secrets.mongo_db_key.conn_str
+database_access = st.secrets.grid_db_key.conn_str
 
 # Instantiate client
 client =  MongoClient(database_access)
