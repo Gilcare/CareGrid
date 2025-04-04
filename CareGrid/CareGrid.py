@@ -64,7 +64,7 @@ def healthworker_login_form():
         with st.form(key = "Healthworker_Form", clear_on_submit = True):
             st.subheader("Access Health Records")
             healthworker_username = st.text_input("Username")
-            healthworker_password = st.text_input("Password", type =["password")
+            healthworker_password = st.text_input("Password", type ="password")
             submitted = st.form_submit_button("Submit")
             if submitted:
                 if not healthworker_username or not healthworker_password:
