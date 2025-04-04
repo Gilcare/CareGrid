@@ -1,3 +1,4 @@
+import pandas 
 import streamlit as st
 
 # Function for health personnel login and registration
@@ -68,6 +69,8 @@ def add_new_patient_with_ocr():
     if scan_patient_id:
         st.image(scan_patient_id)
 
+
+"""Finish this up so inputing patient details is seamless for healthcare workers"""
 def add_new_patient_typing():
     """Add Patient's Details By Typing"""
 
@@ -77,6 +80,15 @@ def patient_record():
     if search:
         patient_database.find_one({"Patient's Name": search_name})
 
-    with:
-        clinic_note, lab_investigation, medical_images, other_details = st.tabs(["clinic_note", "lab_investigation", "medical_images", "other_details"])
-   
+    lab_investigation, medical_images, other_details = st.tabs(["clinic_note", "lab_investigation", "medical_images", "other_details"])
+
+    # Take Clinic Notes By Typing
+    clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
+    # Take Clinic Notes By Audio
+    clinic_notes_audio = st.audio_input("Clinical Notes(🎙️ Speak)")
+    if clinic_notes_audio:
+        st.audio(clinic_notes_audio)
+        """Write Code To Convert Into Text"""
+            
+    with lab_investigation:
+        
