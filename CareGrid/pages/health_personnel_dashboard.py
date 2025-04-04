@@ -115,7 +115,7 @@ def patient_record():
 
                     if file_type.startswith("image/"):
                         image = Image.open(io.BytesIO(file_bytes))
-                        st.image(image, caption=uploaded_file.name, use_column_width=True)
+                        st.image(image, caption=uploaded_file.name, use_container_width=True)
 
                     elif file_type == "application/pdf":
                         base64_pdf = base64.b64encode(file_bytes).decode('utf-8')
