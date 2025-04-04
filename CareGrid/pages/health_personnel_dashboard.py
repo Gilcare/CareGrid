@@ -78,8 +78,8 @@ def add_new_patient_typing():
 def patient_record():
     st.write("Find Patient's Record")
     search_name = st.text_input("Enter Patient's Name")
-    if search:
-        patient_database.find_one({"Patient's Name": search_name})
+    #if search_name:
+    #    patient_database.find_one({"Patient's Name": search_name})
 
    
 
