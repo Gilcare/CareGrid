@@ -62,5 +62,5 @@ st.write("Welcome Physician")
 
 
 def add_new_patient():
-    with
-    st.button("Add New Patient")
+    """Use OCR To Extract Details From Patient ID"""
+    scan_patient_id = st.camera to
