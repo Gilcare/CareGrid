@@ -27,7 +27,7 @@ db = client["EHR_Database"]
 
 # Create Collections (Data Table | Symptom_Variables)
 credentials_collection = db["Role Login Credentials Data"]
-patient_collection = db["Patients' Medical Data"]
+patients_collection = db["Patients' Medical Data"]
 
 
 
