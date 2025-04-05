@@ -108,7 +108,7 @@ def healthworker_login_form():
             else:
                     data = {
                         "Username": hw_username,
-                        "Firstname": hw_fisrtname,
+                        "Firstname": hw_firstname,
                         "Lastname": hw_lastname,
                         "Email": hw_email,
                         "Password": hw_password,
