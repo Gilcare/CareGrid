@@ -13,7 +13,7 @@ from pymongo import MongoClient
 # Create MongDB Access
 database_access = st.secrets.grid_db_key.conn_str
 # Instantiate MongoDB Client
-client = MongoClient("database_access")
+client = MongoClient(database_access)
 
 # Create Database 
 db = client["Login"]
