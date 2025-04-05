@@ -14,10 +14,11 @@ from pymongo import MongoClient
 database_access = st.secrets.grid_db_key.conn_str
 # Instantiate MongoDB Client
 client = MongoClient("database_access")
+
 # Create Database 
-db = client["EHR_Database"]
+db = client["Login"]
 # Create collections 
-login_collection = db["Login_Credentials"]
+credentials_collection = db["Credentials"]
 #patient
 
 # Placeholder for database connection
@@ -102,7 +103,7 @@ def healthworker_login_form():
                     st.error("Please complete all required fields")
             elif hw_password != hw_confirm_password:
                     st.error("Passwords do not match")
-            elif login_collection.find_one({"$or": [{"Username": hw_username}, {"Email": hw_email}]}):
+            elif credentials_collection.find_one({"$or": [{"Username": hw_username}, {"Email": hw_email}]}):
                     st.error("Username or Email already exists.")
             else:
                     data = {
@@ -122,7 +123,7 @@ def healthworker_login_form():
                         "Hospital Province/State": hospital_province,
                         "Hospital Country": hospital_country
                     }
-                    login_collection.insert_one(data)
+                    credentials_collection.insert_one(data)
                     st.success("Account Created. Awaiting Approval From Hospital Admin")
                                
                     st.success("Registration successful")
@@ -137,7 +138,7 @@ def healthworker_login_form():
                 if not healthworker_username or not healthworker_password:
                     st.error("Enter Username & Password")
                 else:
-                    hw_details = login_collection.find_one({
+                    hw_details = credentials_collection.find_one({
                         "Name": healthworker_username, "Password": healthworker_password
                     })
                     if not hw_details:
