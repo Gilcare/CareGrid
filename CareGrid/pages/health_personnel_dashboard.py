@@ -79,14 +79,21 @@ def add_new_patient_with_ocr():
 
 def add_new_patient_typing():
     """Add Patient's Details By Typing"""
-    st.subheader("Add Patient By Typing")
+    st.subheader("Add Patient Details By Typing")
     name = st.text_input("Patient Name")
     age = st.number_input("Age", 0, 120)
-    gender = st.selectbox("Gender", ["Male", "Female", "Other"])
+    sex = st.selectbox("Sex", ["Male", "Female"])
     address = st.text_area("Address")
-    if st.button("Register Patient"):
-        st.success("Patient registered (placeholder logic)")
-
+    email = st.text_input("Email")
+    phone = st.text_input("phone number")
+    origin = st.text_input("State & LGA/County")
+    occupation = st.text_input("Occupation")
+    religion = st.text_input("Religion")
+    hle = st.text_input("Highest Level of Education")
+   
+    if st.button("Register Patient Details"):
+        st.success("Patient details registered (placeholder logic)")
+        
 
 def patient_record():
     st.write("Find Patient's Record")
