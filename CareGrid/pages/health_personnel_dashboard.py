@@ -86,7 +86,7 @@ def healthworker_login_form():
                         "Hospital Country": hospital_country
                     }
                     credentials_collection.insert_one(data)
-                    st.success("Account Created. Awaiting Approval From Hospital
+                    st.success("Account Created. Awaiting Approval From Hospital Admin")
                                
                     st.success("Registration successful")
     
