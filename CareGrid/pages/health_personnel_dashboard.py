@@ -19,6 +19,8 @@ client = MongoClient(database_access)
 db = client["Login"]
 # Create collections 
 credentials_collection = db["Credentials"]
+patient_collection = db["Patients_Data"]
+
 #patient
 
 # Placeholder for database connection
@@ -139,7 +141,7 @@ def healthworker_login_form():
                     st.error("Enter Username & Password")
                 else:
                     hw_details = credentials_collection.find_one({
-                        "Name": healthworker_username, "Password": healthworker_password
+                        "Username": healthworker_username, "Password": healthworker_password
                     })
                     if not hw_details:
                         st.error("Invalid Username/Password")
