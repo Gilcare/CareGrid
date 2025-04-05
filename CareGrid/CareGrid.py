@@ -1,7 +1,7 @@
 import streamlit as st
-import pymongo
+#import pymongo
 
-from pymongo import MongoClient 
+#from pymongo import MongoClient 
 
 st.markdown("<h1 style='text-align: center;'>🪢CareGrid</h1>", unsafe_allow_html = True)
 #st.caption("_WELCOME TO THE FUTURE OF HEALTHCARE_")
@@ -17,17 +17,17 @@ st.divider()
 
 
 # MongoDB access
-database_access = st.secrets.grid_db_key.conn_str
+#...database_access = st.secrets.grid_db_key.conn_str
 
 # Instantiate client
-client =  MongoClient(database_access)
+#...client =  MongoClient(database_access)
                 
 # Create DB
-db = client["EHR_Database"]
+#...db = client["EHR_Database"]
 
 # Create Collections (Data Table | Symptom_Variables)
-credentials_collection = db["Role Login Credentials Data"]
-patients_collection = db["Patients' Medical Data"]
+#...credentials_collection = db["Role Login Credentials Data"]
+#...patients_collection = db["Patients' Medical Data"]
 
 
 
