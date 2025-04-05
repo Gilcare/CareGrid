@@ -23,11 +23,11 @@ database_access = st.secrets.grid_db_key.conn_str
 client =  MongoClient(database_access)
                 
 # Create DB
-login_db = client["Login_Database"]
+db = client["EHR_Database"]
 
 # Create Collections (Data Table | Symptom_Variables)
-credentials_collection = login_db["Credentials Data"]
-#symptom_collection = db["Symptom_Variables"]
+credentials_collection = db["Role Login Credentials Data"]
+patient_collection = db["Patients' Medical Data"]
 
 
 
