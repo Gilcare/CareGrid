@@ -1,12 +1,24 @@
+import base64
 import datetime
+import io
 import numpy as np
 import pandas as pd
+import pydicom
+import pymongo
 import random
 import streamlit as st
 from PIL import Image
-import io
-import base64
-import pydicom
+from pymongo import MongoClient
+
+# Create MongDB Access
+database_access = st.secrets.grid_db_key.conn_str
+# Instantiate MongoDB Client
+client = MongoClient("database_access")
+# Create Database 
+db = client["EHR Database"]
+# Create collections 
+login_collection = db["Login Credentials Data(By Role)"]
+#patient
 
 # Placeholder for database connection
 # credentials_collection = ...
@@ -65,7 +77,7 @@ def healthworker_login_form():
                     st.error("Please complete all required fields")
             elif hw_password != hw_confirm_password:
                     st.error("Passwords do not match")
-            elif credentials_collection.find_one({"$or": [{"Username": hw_username}, {"Email": hw_email}]}):
+            elif login_collection.find_one({"$or": [{"Username": hw_username}, {"Email": hw_email}]}):
                     st.error("Username or Email already exists.")
             else:
                     data = {
@@ -85,7 +97,7 @@ def healthworker_login_form():
                         "Hospital Province/State": hospital_province,
                         "Hospital Country": hospital_country
                     }
-                    credentials_collection.insert_one(data)
+                    login_collection.insert_one(data)
                     st.success("Account Created. Awaiting Approval From Hospital Admin")
                                
                     st.success("Registration successful")
@@ -100,7 +112,7 @@ def healthworker_login_form():
                 if not healthworker_username or not healthworker_password:
                     st.error("Enter Username & Password")
                 else:
-                    hw_details = credentials_collection.find_one({
+                    hw_details = login_collection.find_one({
                         "Name": healthworker_username, "Password": healthworker_password
                     })
                     if not hw_details:
