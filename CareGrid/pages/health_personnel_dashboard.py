@@ -69,7 +69,7 @@ def healthworker_login_form():
                         st.success("Access Granted")
 
 
-def add_new_patient_with_ocr():
+def add_new_patient_details_with_ocr():
     """Use OCR To Extract Details From Patient ID And Register Patient's Details In EHR System"""
     enable_camera = st.checkbox("Enable Camera")
     scan_patient_id = st.camera_input("Scan Patient's ID To Fill Details", disabled=not enable_camera)
