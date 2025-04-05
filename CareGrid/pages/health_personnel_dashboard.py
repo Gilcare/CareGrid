@@ -118,7 +118,7 @@ def add_new_patient_typing():
            "medicalImages": [],  # File metadata here
             }
 
-    result = ehr_collection.insert_one(patient_data)
+    result = patient_collection.insert_one(patient_data)
     st.success(f"Patient details saved with ID: {result.inserted_id}")
     
         
@@ -188,9 +188,11 @@ def patient_record():
         st.write("Add Insurance Details Here")
 
 
-# Entry point
+# Main App
 st.write("Welcome")
-patient_record()
+healthworker_login_form()
+if true:
+    add_new_patient_typing():
 # healthworker_login_form()
 # add_new_patient_with_ocr()
 # add_new_patient_typing()
