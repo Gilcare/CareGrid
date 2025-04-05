@@ -99,15 +99,14 @@ def healthworker_login_form():
 
             # Simple validation
             if st.form_submit_button("Register"):
-                    required_fields = [hw_firstname, hw_lastname, hw_email, hw_username, hw_password, hw_license_number, 
-                      hw_rank, hospital_name, hospital_address, hospital_city, hospital_province, hospital_country]
-            if not all(required_fields) or not terms_checkbox:
+                    required_fields = [hw_firstname, hw_lastname, hw_email, hw_username, hw_password, hw_license_number, hw_rank, hospital_name, hospital_address, hospital_city, hospital_province, hospital_country]
+                if not all(required_fields) or not terms_checkbox:
                     st.error("Please complete all required fields")
-            elif hw_password != hw_confirm_password:
+                elif hw_password != hw_confirm_password:
                     st.error("Passwords do not match")
-            elif credentials_collection.find_one({"$or": [{"Username": hw_username}, {"Email": hw_email}]}):
+                elif credentials_collection.find_one({"$or": [{"Username": hw_username}, {"Email": hw_email}]}):
                     st.error("Username or Email already exists.")
-            else:
+                else:
                     data = {
                         "Username": hw_username,
                         "Firstname": hw_firstname,
@@ -151,7 +150,8 @@ def healthworker_login_form():
 
 def add_new_patient_details_with_ocr():
     """Use OCR To Extract Details From Patient ID And Register Patient's Details In EHR System"""
-    enable_camera = st.checkbox("Enable Camera")
+    enabl
+    e_camera = st.checkbox("Enable Camera")
     scan_patient_id = st.camera_input("Scan Patient's ID To Fill Details", disabled=not enable_camera)
     if scan_patient_id:
         st.image(scan_patient_id)
