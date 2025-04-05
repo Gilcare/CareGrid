@@ -15,9 +15,9 @@ database_access = st.secrets.grid_db_key.conn_str
 # Instantiate MongoDB Client
 client = MongoClient("database_access")
 # Create Database 
-db = client["EHR Database"]
+db = client["EHR_Database"]
 # Create collections 
-login_collection = db["Login Credentials Data(By Role)"]
+login_collection = db["Login_Credentials"]
 #patient
 
 # Placeholder for database connection
