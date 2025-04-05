@@ -191,7 +191,7 @@ def patient_record():
 # Main App
 st.write("Welcome")
 healthworker_login_form()
-if true:
+if True:
     add_new_patient_typing()
 # healthworker_login_form()
 # add_new_patient_with_ocr()
