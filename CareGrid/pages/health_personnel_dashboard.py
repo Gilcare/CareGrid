@@ -18,37 +18,6 @@ def healthworker_login_form():
     access_records, sign_up = st.tabs(["Access Records", "Request Access"])
 
     with sign_up:
-        with st.form(key="Sign_Up", clear_on_submit=True):
-            st.subheader("Sign-Up")
-            hw_username = st.text_input("Username")
-            hw_email = st.text_input("Email")
-            hw_password = st.text_input("Password", type="password")
-            hw_unit = st.text_input("Unit (e.g: Dermatology)")
-            hw_title = st.text_input("Title (e.g: Dr)")
-            hw_rank = st.text_input("Rank (e.g: Snr. Resident/Matron)")
-            hospital_name = st.text_input("Hospital Name")
-            hospital_country = st.text_input("Country where hospital is located")
-            hospital_province = st.text_input("Province/State/County/District Hospital is located")
-            
-            if st.form_submit_button("Create Account"):
-                if not hw_username or not hw_email or not hw_password:
-                    st.error("Please fill in all required fields.")
-                elif credentials_collection.find_one({"$or": [{"Name": hw_username}, {"Email": hw_email}]}):
-                    st.error("Username or Email already exists.")
-                else:
-                    data = {
-                        "Name": hw_username,
-                        "Email": hw_email,
-                        "Password": hw_password,
-                        "Unit": hw_unit,
-                        "Title": hw_title,
-                        "Rank": hw_rank,
-                        "Hospital": hospital_name,
-                        "Country": hospital_country,
-                        "Province": hospital_province
-                    }
-                    credentials_collection.insert_one(data)
-                    st.success("Account Created. Awaiting Approval From Hospital EHR Admin.")
     
     with access_records:
         with st.form(key="Healthworker_Form", clear_on_submit=True):
