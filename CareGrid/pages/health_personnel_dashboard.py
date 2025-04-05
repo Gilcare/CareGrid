@@ -90,9 +90,37 @@ def add_new_patient_typing():
     occupation = st.text_input("Occupation")
     religion = st.text_input("Religion")
     hle = st.text_input("Highest Level of Education")
-   
+
+    clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
+    clinic_notes_audio = st.audio_input("Clinical Notes(🎙️ Speak)")
+    if clinic_notes_audio:
+        st.audio(clinic_notes_audio)
+        # Convert to text - Placeholder
+        st.write("Audio transcription feature not implemented.")
+        
     if st.button("Register Patient Details"):
-        st.success("Patient details registered (placeholder logic)")
+        patient_data = {
+           "personalDetails": {
+                 "name": name,
+                 "age": age,
+                 "sex": sex,
+                 "address": address,
+                 "email": email,
+                 "phone": phone,
+                 "origin": origin,
+                 "occupation": occupation,
+                 "religion": religion,
+                 "education": hle
+                 },
+           "clinicalNotes": clinic_notes_text,
+           "labInvestigations": [],  # You can append to this dynamically later
+           "medicalRecords": [],
+           "medicalImages": [],  # File metadata here
+            }
+
+    result = ehr_collection.insert_one(patient_data)
+    st.success(f"Patient details saved with ID: {result.inserted_id}")
+    
         
 
 def patient_record():
