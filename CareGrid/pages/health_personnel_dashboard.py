@@ -60,7 +60,7 @@ def healthworker_login_form():
             col5, col6 = st.columns(2)
             with col5:
               hospital_city = st.text_input("City*")
-              hospital_country_selection = st.selectbox("Country*",[
+              hospital_country = st.selectbox("Country*",[
                             "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", 
                             "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", 
                             "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", 
