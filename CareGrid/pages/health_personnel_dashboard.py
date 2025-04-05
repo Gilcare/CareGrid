@@ -30,7 +30,7 @@ def healthworker_login_form():
     access_records, sign_up = st.tabs(["Access Records", "Request Access"])
 
     with sign_up:
-        with st.form(key="Sign_Up", clear_on_submit=True):
+        with st.form(key="Sign_Up", clear_on_submit= False):
             st.subheader("Sign-Up")
             col1, col2 = st.columns(2)
             with col1:
