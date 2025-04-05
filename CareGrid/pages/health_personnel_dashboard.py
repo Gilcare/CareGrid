@@ -99,7 +99,7 @@ def healthworker_login_form():
 
             # Simple validation
             if st.form_submit_button("Register"):
-                    required_fields = [hw_firstname, hw_lastname, hw_email, hw_username, hw_password, hw_license_number, hw_rank, hospital_name, hospital_address, hospital_city, hospital_province, hospital_country]
+                required_fields = [hw_firstname, hw_lastname, hw_email, hw_username, hw_password, hw_license_number, hw_rank, hospital_name, hospital_address, hospital_city, hospital_province, hospital_country]
                 if not all(required_fields) or not terms_checkbox:
                     st.error("Please complete all required fields")
                 elif hw_password != hw_confirm_password:
