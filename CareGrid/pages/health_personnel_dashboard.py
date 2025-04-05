@@ -62,7 +62,7 @@ def healthworker_login_form():
               hospital_city = st.text_input("City*")
               hospital_country = st.selectbox("Country*", ["United States", "Canada", "United Kingdom", "Australia", "Nigeria", "Ghana", "South Africa", "Other"])
               if hospital_country == "Other":
-                  hospital_country = st.text_input("Name of Country")
+                  hospital_country = st.text_input("Name of Country*")
             with col6:
               hospital_province = st.text_input("Province/State*")
               hospital_department = st.text_input("Your Department/Unit*")
