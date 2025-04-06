@@ -272,8 +272,9 @@ def patient_record():
 def main():
     st.title("Health Worker Dashboard")
 
-    if st.session_state['hw_logged_in']:
+    if st.session_state['hw_logged_in'] = True:
         st.success("Welcome, Health Worker!")
+        patient_record()
         if st.button("Logout"):
             st.session_state['hw_logged_in'] = False
             st.experimental_rerun()
