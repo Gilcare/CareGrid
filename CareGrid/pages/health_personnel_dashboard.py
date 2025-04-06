@@ -25,7 +25,7 @@ if 'hw_logged_in' not in st.session_state:
 if 'hw_signed_up' not in st.session_state:
     st.session_state['hw_signed_up'] = False
 
-# Function for health personnel login and registration
+# ==== HEALTH WORKER LOGIN & SIGN UP====
 def healthworker_login_form():
     """Function to enable logging in healthcare worker (2nd Access)"""
     access_records, sign_up = st.tabs(["Access Records", "Request Access"])
