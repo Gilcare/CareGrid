@@ -13,9 +13,10 @@ from pymongo import MongoClient
 # ==== DATABASE SETUP ====
 database_access = st.secrets.grid_db_key.conn_str
 client = MongoClient(database_access)
-db = client["Login"]
-credentials_collection = db["Credentials"]
-patient_collection = db["Patients_Data"]
+db = client.Login    #1st Database
+ehr_db = client.EHR  #2nd Database
+credentials_collection = db.Credentials   #1st Collection 
+patient_collection = ehr_db.Patients_Data   #2nd Collection 
 
 
 # ==== SESSION STATE INIT ====
