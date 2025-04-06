@@ -267,11 +267,22 @@ def patient_record():
         st.write("Add Insurance Details Here")
 
 
-# Main App
-st.write("Welcome")
-healthworker_login_form()
-if True:
+# --- MAIN APP LOGIC ---
+st.title("Health Worker Dashboard")
+
+if st.session_state['hw_logged_in']:
+    st.success("Welcome, Health Worker!")
+    if st.button("Logout"):
+        st.session_state['hw_logged_in'] = False
+        st.experimental_rerun()
+
     add_new_patient_typing()
-# healthworker_login_form()
-# add_new_patient_with_ocr()
-# add_new_patient_typing()
+
+elif st.session_state['hw_signed_up']:
+    st.info("Registration successful. Awaiting approval. Please log in once access is granted.")
+    if st.button("Back to Login"):
+        st.session_state['hw_signed_up'] = False
+        st.experimental_rerun()
+
+else:
+    healthworker_login_form()
