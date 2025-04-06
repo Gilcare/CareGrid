@@ -11,7 +11,7 @@ from PIL import Image
 from pymongo import MongoClient
 
 # ==== DATABASE SETUP ====
-database_access = st.secrets.grid_db_key.conn_str
+database_access = st.secrets.mongo_db_key.conn_str
 client = MongoClient(database_access)
 db = client.Login    #1st Database
 ehr_db = client.EHR  #2nd Database
