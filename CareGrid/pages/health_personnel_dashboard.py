@@ -272,7 +272,7 @@ def patient_record():
 def main():
     st.title("Health Worker Dashboard")
 
-    if st.session_state['hw_logged_in'] = True:
+    if st.session_state['hw_logged_in']:
         st.success("Welcome, Health Worker!")
         patient_record()
         if st.button("Logout"):
