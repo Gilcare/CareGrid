@@ -279,7 +279,7 @@ def main():
             st.session_state['hw_logged_in'] = False
             st.experimental_rerun()
 
-        add_new_patient_typing()
+        #add_new_patient_typing()
 
     elif st.session_state['hw_signed_up']:
         st.info("Registration successful. Awaiting approval. Please log in once access is granted.")
