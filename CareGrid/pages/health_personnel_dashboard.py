@@ -274,10 +274,11 @@ def main():
 
     if st.session_state['hw_logged_in']:
         st.success("Welcome, Health Worker!")
-        patient_record()
+        #patient_record()
+        add_new_patient_typing()
         if st.button("Logout"):
             st.session_state['hw_logged_in'] = False
-            st.experimental_rerun()
+            st.rerun()
 
         #add_new_patient_typing()
 
@@ -285,7 +286,7 @@ def main():
         st.info("Registration successful. Awaiting approval. Please log in once access is granted.")
         if st.button("Back to Login"):
             st.session_state['hw_signed_up'] = False
-            st.experimental_rerun()
+            st.rerun()
 
     else:
         healthworker_login_form()
