@@ -144,7 +144,7 @@ def healthworker_login_form():
                         st.error("Invalid Username/Password")
                     else:
                         st.success("Access Granted")
-
+                        st.session_state["hw_logged_in"] = True
 
 def add_new_patient_details_with_ocr():
     """Use OCR To Extract Details From Patient ID And Register Patient's Details In EHR System"""
