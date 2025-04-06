@@ -10,22 +10,20 @@ import streamlit as st
 from PIL import Image
 from pymongo import MongoClient
 
-# Create MongDB Access
+# ==== DATABASE SETUP ====
 database_access = st.secrets.grid_db_key.conn_str
-# Instantiate MongoDB Client
 client = MongoClient(database_access)
-
-# Create Database 
 db = client["Login"]
-# Create collections 
 credentials_collection = db["Credentials"]
 patient_collection = db["Patients_Data"]
 
-#patient
 
-# Placeholder for database connection
-# credentials_collection = ...
-# patient_database = ...
+# ==== SESSION STATE INIT ====
+if 'hw_logged_in' not in st.session_state:
+    st.session_state['hw_logged_in'] = False
+
+if 'hw_signed_up' not in st.session_state:
+    st.session_state['hw_signed_up'] = False
 
 # Function for health personnel login and registration
 def healthworker_login_form():
