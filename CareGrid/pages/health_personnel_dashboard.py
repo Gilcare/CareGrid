@@ -207,9 +207,11 @@ def patient_record():
     #st.write("Find Patient's Record")
     search_name = st.text_input("🔍 Find Patient's Record")
     if st.button("Search"):
-        patient_collection.find_one({"Patient's Name": search_name})
+        search_result = patient_collection.find_one({"Patient's Name": search_name})
+        if search_result != search_name:
+            st.error("Patient's Record Not Found")
     else:
-        st.warning("Patient's Record Not Found")
+        st.write(" ")
     clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
     clinic_notes_audio = st.audio_input("Clinical Notes(🎙️ Speak)")
     if clinic_notes_audio:
