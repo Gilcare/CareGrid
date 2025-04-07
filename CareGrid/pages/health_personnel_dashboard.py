@@ -206,9 +206,11 @@ def add_new_patient_typing():
 def patient_record():
     st.write("Find Patient's Record")
     search_name = st.text_input("Enter Patient's Name")
-    # if search_name:
-    #     patient_database.find_one({"Patient's Name": search_name})
-
+    search_records = st.button("Search")
+    if search_records:
+        patient_database.find_one({"Patient's Name": search_name})
+    else:
+        st.warning("Patient's Record Not Found")
     clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
     clinic_notes_audio = st.audio_input("Clinical Notes(🎙️ Speak)")
     if clinic_notes_audio:
