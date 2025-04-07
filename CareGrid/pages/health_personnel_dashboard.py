@@ -1,4 +1,4 @@
-import base64
+I'mimport base64
 import datetime
 import io
 import numpy as np
@@ -208,7 +208,7 @@ def patient_record():
     search_name = st.text_input("Enter Patient's Name")
     search_records = st.button("Search")
     if search_records:
-        patient_database.find_one({"Patient's Name": search_name})
+        patient_collection.find_one({"Patient's Name": search_name})
     else:
         st.warning("Patient's Record Not Found")
     clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
