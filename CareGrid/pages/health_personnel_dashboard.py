@@ -206,8 +206,7 @@ def add_new_patient_typing():
 def patient_record():
     #st.write("Find Patient's Record")
     search_name = st.text_input("🔍 Find Patient's Record")
-    search_records = st.button("Search")
-    if search_records:
+    if st.button("Search"):
         patient_collection.find_one({"Patient's Name": search_name})
     else:
         st.warning("Patient's Record Not Found")
