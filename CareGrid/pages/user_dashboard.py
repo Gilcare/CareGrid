@@ -40,8 +40,22 @@ def user_signup_login():
         with col1:
           firstname = st.text_input("Firstname*")
           lastname = st.text_input("Lastname*")
+          username = st.text_input("Username*")
         with col2:
           email = st.text_input("Email*")
           user_password = st.text_input("Password*", type = "password")
           confirm_password = st.text_input("Confirm Password", type = "password")
-    
+        
+        # Verification - Simple Single Checkbox
+        terms_checkbox = st.checkbox("I confirm that all information is accurate and I agree to the Terms of Service*")
+
+        # Simple validation
+        if st.form_submit_button("Sign Up"):
+          required_fields = [firstname, lastname, username,email, user_password]
+          if not all(required_fields) or not terms_checkbox:
+            st.error("Please complete all required fields")
+          elif user_password != confirm_password:
+            st.error("Passwords do not match")
+          else:
+            st.success("Access Granted!")
+
