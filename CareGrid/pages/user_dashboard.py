@@ -16,5 +16,10 @@ def user_signup_login():
   """Function to permit user access the app either through sign up or login"""
   login, sign_up = st.tabs(["Login","Sign Up"])
   with login:
-    with st.form(key = "User Login", clear_on_submit = True)
+    with st.form(key = "User Login", clear_on_submit = True):
+      st.subheader("Login")
+      username = st.text_input("Username")
+      user_password = st.text_input("Password", type = "password")
+      # if not username or not user_password:
+      #    st.error("Please Enter Username/Password")
     
