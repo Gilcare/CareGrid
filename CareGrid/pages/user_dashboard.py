@@ -1,8 +1,11 @@
 import streamlit as st
+import pymongo
+from pymongo import MongoClient
 
 
 
 
+users_credentials_collection = 
 
 # ==== INITIALIZE SESSION STATE ====
 if "user_logged_in" not in st.session_state:
@@ -27,7 +30,7 @@ def user_signup_login():
         if not username or not user_password:
           st.error("Please Enter Username/Password")
         else:
-          user_id = user_credentials_collection.find_one({"Username": username, "Password": user_password})
+          user_id = users_credentials_collection.find_one({"Username": username, "Password": user_password})
           if not user_id:
             st.error("Invalid Username/Password")
           else:
@@ -38,11 +41,11 @@ def user_signup_login():
         st.subheader("Sign Up")
         col1, col2 = st.columns(2)
         with col1:
-          firstname = st.text_input("Firstname*")
-          lastname = st.text_input("Lastname*")
+          user_firstname = st.text_input("Firstname*")
+          user_lastname = st.text_input("Lastname*")
           username = st.text_input("Username*")
         with col2:
-          email = st.text_input("Email*")
+          user_email = st.text_input("Email*")
           user_password = st.text_input("Password*", type = "password")
           confirm_password = st.text_input("Confirm Password", type = "password")
         
@@ -51,11 +54,27 @@ def user_signup_login():
 
         # Simple validation
         if st.form_submit_button("Sign Up"):
-          required_fields = [firstname, lastname, username,email, user_password]
+          required_fields = [user_firstname, user_lastname, username, user_email, user_password]
           if not all(required_fields) or not terms_checkbox:
             st.error("Please complete all required fields")
           elif user_password != confirm_password:
             st.error("Passwords do not match")
-          else:
-            st.success("Access Granted!")
-
+          elif users_credentials_collection.find_one({"$or": [{"Username": username}, {"Email": email}]}):
+                    st.error("Username or Email already exists.")
+                else:
+                    user_data = {
+                        "Username": username,
+                        "User firstname": user_firstname,
+                        "User lastname": user_lastname,
+                        "User email": user_email,
+                        "User Password": user_password,
+                        "User ID": user_id_access,
+                        "Hospital": hospital_name,
+                        "Hospital Address": hospital_address,
+                        "Hospital City": hospital_city,
+                        "Hospital Province/State": hospital_province,
+                        "Hospital Country": hospital_country
+                    }
+                    users_credentials_collection.insert_one(user_data)
+                    st.session_state["user_signed_up"] = True
+                    st.success("Account created. You can now login to access your health records")
