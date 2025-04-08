@@ -26,8 +26,16 @@ def user_signup_login():
       if st.form_submit_button("Login"):
         if not username or not user_password:
           st.error("Please Enter Username/Password")
-        elif:
+        else:
           user_id = user_credentials_collection.find_one({"Username": username, "Password": user_password})
-          if user_id 
+          if not user_id:
+            st.error("Invalid Username/Password")
+          else:
+            st.success("Access Granted")
+
+    with sign_up:
+      with st.form(key = "User Sign Up", clear_on_submit = True):
+        st.subheader("Sign Up")
+        col1, col2
         
     
