@@ -70,7 +70,6 @@ def user_signup_login():
                         "User Password": user_password,
                         "User ID": user_id_access,
                         "Hospital": hospital_name,
-                        "Hospital Address": hospital_address,
                         "Hospital City": hospital_city,
                         "Hospital Province/State": hospital_province,
                         "Hospital Country": hospital_country
