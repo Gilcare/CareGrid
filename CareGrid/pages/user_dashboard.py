@@ -26,5 +26,8 @@ def user_signup_login():
       if st.form_submit_button("Login"):
         if not username or not user_password:
           st.error("Please Enter Username/Password")
+        elif:
+          user_id = user_credentials_collection.find_one({"Username": username, "Password": user_password})
+          if user_id 
         
     
