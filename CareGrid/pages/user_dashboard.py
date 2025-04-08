@@ -36,6 +36,12 @@ def user_signup_login():
     with sign_up:
       with st.form(key = "User Sign Up", clear_on_submit = True):
         st.subheader("Sign Up")
-        col1, col2
-        
+        col1, col2 = st.columns(2)
+        with col1:
+          firstname = st.text_input("Firstname*")
+          lastname = st.text_input("Lastname*")
+        with col2:
+          email = st.text_input("Email*")
+          user_password = st.text_input("Password*", type = "password")
+          confirm_password = st.text_input("Confirm Password", type = "password")
     
