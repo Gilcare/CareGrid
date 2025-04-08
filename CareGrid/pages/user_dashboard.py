@@ -20,6 +20,11 @@ def user_signup_login():
       st.subheader("Login")
       username = st.text_input("Username")
       user_password = st.text_input("Password", type = "password")
-      # if not username or not user_password:
-      #    st.error("Please Enter Username/Password")
+      
+
+      # Simple Validation 
+      if st.form_submit_button("Login"):
+        if not username or not user_password:
+          st.error("Please Enter Username/Password")
+        
     
