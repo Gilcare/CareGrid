@@ -7,6 +7,7 @@ import pydicom
 import pymongo
 import random
 import streamlit as st
+from lab_tests_catalog import lab_test_full
 from PIL import Image
 from pymongo import MongoClient
 
@@ -54,6 +55,34 @@ def display_lab_results():
         
 
 
+
+def add_lab_investigation_form(lab_tests_dict):
+    st.subheader("Add Lab Investigation")
+
+    selected_test = st.selectbox("Select a Laboratory Test", list(lab_tests_dict.keys()))
+    test_info = lab_tests_dict[selected_test]
+    unit = test_info["unit"]
+    is_scientific = test_info["scientific"]
+
+    if is_scientific:
+        input_value = st.number_input(f"Enter result for {selected_test} (Only the number)", step=0.1)
+        formatted_value = f"{input_value} {unit}"
+    else:
+        if unit and not unit.lower() in ["positive/negative", "detected/not detected"]:
+            input_value = st.number_input(f"Enter result for {selected_test} ({unit})", step=0.1)
+        else:
+            input_value = st.text_input(f"Enter result for {selected_test}")
+        formatted_value = f"{input_value} {unit}" if unit else input_value
+
+    if st.button("Add Lab Test Result"):
+        st.success(f"Result added: {selected_test} — {formatted_value}")
+        return {
+            "test_name": selected_test,
+            "value": input_value,
+            "formatted_result": formatted_value,
+            "unit": unit
+    }
+    
 
 
 
