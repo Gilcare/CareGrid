@@ -59,7 +59,7 @@ def add_lab_result(test_name, result):
 def add_lab_investigation_form(lab_tests_full):
     st.subheader("Add Lab Investigation")
 
-    selected_test = st.selectbox("Select a Laboratory Test", list(lab_tests_dict.keys()))
+    selected_test = st.selectbox("Select a Laboratory Test", list(lab_tests_full.keys()))
     test_info = lab_tests_full[selected_test]
     unit = test_info["unit"]
     is_scientific = test_info["scientific"]
