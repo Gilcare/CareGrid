@@ -260,7 +260,8 @@ def add_new_patient_typing():
 
     add_lab_investigations, add_medical_images, add_other_details = st.tabs(["Lab Investigation", "Medical Imaging", "Other Details"])
     with add_lab_investigations:
-        display_lab_results()
+        #display_lab_results()
+        add_lab_investigation_form(lab_tests_dict)
 
     with add_medical_images:
         # Logic for adding medical images
