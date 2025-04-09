@@ -7,7 +7,7 @@ import pydicom
 import pymongo
 import random
 import streamlit as st
-from lab_tests_catalog import lab_test_full
+from lab_tests_catalog import lab_tests_full
 from PIL import Image
 from pymongo import MongoClient
 
@@ -42,7 +42,7 @@ def get_lab_results():
 def add_lab_result(test_name, result):
     st.session_state.lab_results.append({"Test Name": test_name, "Result": result})
     
-def display_lab_results():
+"""def display_lab_results():
     st.subheader("Lab Results")
     lab_df = get_lab_results()
     edited_df = st.data_editor(lab_df, column_config={
@@ -51,7 +51,7 @@ def display_lab_results():
     }, use_container_width=True, num_rows="dynamic")
     if st.button("Add Lab Results"):
         st.session_state.lab_results = edited_df.to_dict('records')
-        st.success("Lab results added successfully!")
+        st.success("Lab results added successfully!")"""
         
 
 
