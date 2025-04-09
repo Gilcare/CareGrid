@@ -177,7 +177,63 @@ def add_new_patient_typing():
         st.audio(clinic_notes_audio)
         # Convert to text - Placeholder
         st.write("Audio transcription feature not implemented.")
-        
+
+    add_lab_investigations, add_medical_images, add_other_details = st.tabs(["Lab Investigation", "Medical Imaging", "Other Details"])
+    with add_lab_investigations:
+        st.write("Add logic for auto fill in with AI")
+
+    with add_medical_images:
+        # Logic for adding medical images
+        with st.expander("Upload & Display Medical Files"):
+            uploaded_files = st.file_uploader("Upload Medical Files (Images, DICOM, PDFs, etc.)", accept_multiple_files=True)
+
+            if uploaded_files:
+                for uploaded_file in uploaded_files:
+                    st.subheader(f"File: {uploaded_file.name}")
+                    file_type = uploaded_file.type
+                    file_bytes = uploaded_file.read()
+
+                    if file_type.startswith("image/"):
+                        image = Image.open(io.BytesIO(file_bytes))
+                        st.image(image, caption=uploaded_file.name, use_container_width=True)
+
+                    elif file_type == "application/pdf":
+                        base64_pdf = base64.b64encode(file_bytes).decode('utf-8')
+                        pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600px"></iframe>'
+                        st.markdown(pdf_display, unsafe_allow_html=True)
+
+                    elif file_type.startswith("text/"):
+                        content = file_bytes.decode("utf-8")
+                        st.text_area("Text File Contents", content, height=300)
+
+                    elif file_type.startswith("video/"):
+                        st.video(io.BytesIO(file_bytes))
+
+                    elif uploaded_file.name.lower().endswith(".dcm"):
+                        try:
+                            dicom_data = pydicom.dcmread(io.BytesIO(file_bytes))
+                            if 'PixelData' in dicom_data:
+                                image = dicom_data.pixel_array
+                                st.image(image, caption=f"DICOM: {uploaded_file.name}", use_column_width=True)
+                            else:
+                                st.warning("This DICOM file does not contain image data.")
+                            st.json({elem.keyword: str(elem.value) for elem in dicom_data if elem.keyword})
+                        except Exception as e:
+                            st.error(f"Failed to read DICOM file: {e}")
+
+                    else:
+                        st.info(f"Cannot preview this file type directly: {file_type or uploaded_file.name.split('.')[-1]}")
+                        st.download_button(label="Download File", data=file_bytes, file_name=uploaded_file.name)
+                            
+                    with st.expander("Physician's Summary Note About Above Image"):
+                        st.text_input("")
+                        # Add logic to save note
+                    
+
+
+
+
+    
     if st.button("Register Patient Details"):
         patient_data = {
            "personalDetails": {
@@ -219,7 +275,7 @@ def patient_record():
         # Convert to text - Placeholder
         st.write("Audio transcription feature not implemented.")
 
-    medical_images, lab_investigation, other_details = st.tabs(["medical_images", "lab_investigation", "other_details"])
+    medical_images, lab_results, other_details = st.tabs(["medical_images", "lab_investigation", "other_details"])
 
     with medical_images:
         with st.expander("Upload & Display Medical Files"):
