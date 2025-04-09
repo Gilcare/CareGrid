@@ -26,6 +26,57 @@ if 'hw_logged_in' not in st.session_state:
 if 'hw_signed_up' not in st.session_state:
     st.session_state['hw_signed_up'] = False
 
+if 'lab_results' not in st.session_state:
+    st.session_state.lab_results = []
+if 'medical_images_data' not in st.session_state:
+    st.session_state.medical_images_data = []
+    
+
+def get_lab_results():
+    if st.session_state.lab_results:
+        lab_df = pd.DataFrame(st.session_state.lab_results)
+        return lab_df
+    return pd.DataFrame(columns=["Test Name", "Result"])
+
+def add_lab_result(test_name, result):
+    st.session_state.lab_results.append({"Test Name": test_name, "Result": result})
+    
+def display_lab_results():
+    st.subheader("Lab Results")
+    lab_df = get_lab_results()
+    edited_df = st.data_editor(lab_df, column_config={
+        "Test Name": st.column_config.SelectboxColumn("Select Test", options=["Complete Blood Count", "Malaria Parasite", "COVID-19 PCR", "Other"]),
+        "Result": st.column_config.TextColumn("Enter Result")
+    }, use_container_width=True, num_rows="dynamic")
+    if st.button("Add Lab Results"):
+        st.session_state.lab_results = edited_df.to_dict('records')
+        st.success("Lab results added successfully!")
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ==== HEALTH WORKER LOGIN & SIGN UP====
 def healthworker_login_form():
     """Function to enable logging in healthcare worker (2nd Access)"""
