@@ -231,7 +231,7 @@ def add_new_patient_typing():
 
     add_lab_investigations, add_medical_images, add_other_details = st.tabs(["Lab Investigation", "Medical Imaging", "Other Details"])
     with add_lab_investigations:
-        st.write("Add logic for auto fill in with AI")
+        display_lab_results()
 
     with add_medical_images:
         # Logic for adding medical images
