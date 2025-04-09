@@ -7,7 +7,7 @@ import pydicom
 import pymongo
 import random
 import streamlit as st
-from lab_tests_catalog import lab_tests_full
+from pages.lab_tests_catalog import lab_tests_full
 from PIL import Image
 from pymongo import MongoClient
 
