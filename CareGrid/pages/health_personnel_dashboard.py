@@ -301,8 +301,8 @@ def add_new_patient_typing():
            #"summaryNoteMedicalImages": 
             }
 
-    result = patient_collection.insert_one(patient_data)
-    st.success(f"Patient details saved with ID: {result.inserted_id}")
+        result = patient_collection.insert_one(patient_data)
+        st.success(f"Patient details saved with ID: {result.inserted_id}")
     
         
 
