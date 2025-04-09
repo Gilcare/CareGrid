@@ -226,7 +226,7 @@ def add_new_patient_typing():
                         st.download_button(label="Download File", data=file_bytes, file_name=uploaded_file.name)
                             
                     with st.expander("Physician's Summary Note About Above Image"):
-                        st.text_input("")
+                        st.text_input("Diagnosis, Differentials and Important Findings")
                         # Add logic to save note
                     
 
@@ -252,6 +252,7 @@ def add_new_patient_typing():
            "labInvestigations": [],  # You can append to this dynamically later
            "medicalRecords": [],
            "medicalImages": [],  # File metadata here
+           #"summaryNoteMedicalImages": 
             }
 
     result = patient_collection.insert_one(patient_data)
