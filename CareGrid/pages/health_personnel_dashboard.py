@@ -25,7 +25,7 @@ if 'hw_logged_in' not in st.session_state:
 
 if 'hw_signed_up' not in st.session_state:
     st.session_state['hw_signed_up'] = False
-
+# %%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 if 'lab_results' not in st.session_state:
     st.session_state.lab_results = []
 if 'medical_images_data' not in st.session_state:
