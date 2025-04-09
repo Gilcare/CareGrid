@@ -320,7 +320,7 @@ def patient_record():
                         st.info(f"Cannot preview this file type directly: {file_type or uploaded_file.name.split('.')[-1]}")
                         st.download_button(label="Download File", data=file_bytes, file_name=uploaded_file.name)
 
-    with lab_investigation:
+    with lab_results:
         lab_df = pd.DataFrame(np.random.randn(10, 5), columns=("col %d" % i for i in range(5)))
         st.table(lab_df)
 
