@@ -280,11 +280,6 @@ def add_new_patient_typing():
                         st.text_input("Diagnosis, Differentials and Important Findings")
                         # Add logic to save note
                     
-
-
-
-
-    
     if st.button("Register Patient Details"):
         patient_data = {
            "personalDetails": {
