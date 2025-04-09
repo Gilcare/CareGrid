@@ -56,11 +56,11 @@ def add_lab_result(test_name, result):
 
 
 
-def add_lab_investigation_form(lab_tests_dict):
+def add_lab_investigation_form(lab_tests_full):
     st.subheader("Add Lab Investigation")
 
     selected_test = st.selectbox("Select a Laboratory Test", list(lab_tests_dict.keys()))
-    test_info = lab_tests_dict[selected_test]
+    test_info = lab_tests_full[selected_test]
     unit = test_info["unit"]
     is_scientific = test_info["scientific"]
 
@@ -261,7 +261,7 @@ def add_new_patient_typing():
     add_lab_investigations, add_medical_images, add_other_details = st.tabs(["Lab Investigation", "Medical Imaging", "Other Details"])
     with add_lab_investigations:
         #display_lab_results()
-        add_lab_investigation_form(lab_tests_dict)
+        add_lab_investigation_form(lab_tests_full)
 
     with add_medical_images:
         # Logic for adding medical images
