@@ -334,7 +334,8 @@ def main():
 
     if st.session_state['hw_logged_in']:
         st.success("Welcome, Health Worker!")
-        patient_record()
+        add_new_patient_typing()
+        #patient_record()
         if st.button("Logout"):
             st.session_state['hw_logged_in'] = False
             st.rerun()
