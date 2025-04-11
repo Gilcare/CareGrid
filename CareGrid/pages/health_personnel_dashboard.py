@@ -42,21 +42,25 @@ def get_lab_results():
 def add_lab_result(test_name, result):
     st.session_state.lab_results.append({"Test Name": test_name, "Result": result})
     
-"""def display_lab_results():
-    st.subheader("Lab Results")
-    lab_df = get_lab_results()
-    edited_df = st.data_editor(lab_df, column_config={
-        "Test Name": st.column_config.SelectboxColumn("Select Test", options=["Complete Blood Count", "Malaria Parasite", "COVID-19 PCR", "Other"]),
-        "Result": st.column_config.TextColumn("Enter Result")
-    }, use_container_width=True, num_rows="dynamic")
-    if st.button("Add Lab Results"):
-        st.session_state.lab_results = edited_df.to_dict('records')
-        st.success("Lab results added successfully!")"""
+
+
+
+def lab_investigations():
+    st.subheader("Lab Investigations")
+
+    # Create a DataFrame with test names from the catalog and empty result columns
+    df = pd.DataFrame({"Test Name": lab_tests_full, "Result": [""] * len(lab_tests_full)})
+
+    # Editable table
+    edited_df = st.data_editor(df, key="lab_editor", use_container_width=True)
+
+    return edited_df.to_dict("records")
+    
         
 
 
 
-def add_lab_investigation_form(lab_tests_full):
+def add_SI_units_to_lab_form(lab_tests_full):
     st.subheader("Add Lab Investigation")
 
     selected_test = st.selectbox("Select a Laboratory Test", list(lab_tests_full.keys()))
@@ -260,8 +264,7 @@ def add_new_patient_typing():
 
     add_lab_investigations, add_medical_images, add_other_details = st.tabs(["Lab Investigation", "Medical Imaging", "Other Details"])
     with add_lab_investigations:
-        #display_lab_results()
-        add_lab_investigation_form(lab_tests_full)
+        lab_data = lab_investigations()
 
     with add_medical_images:
         # Logic for adding medical images
@@ -325,7 +328,7 @@ def add_new_patient_typing():
                  "education": hle
                  },
            "clinicalNotes": clinic_notes_text,
-           "labInvestigations": [],  # You can append to this dynamically later
+           "labInvestigations": lab_data,  # You can append to this dynamically later
            "medicalRecords": [],
            "medicalImages": [],  # File metadata here
            #"summaryNoteMedicalImages": 
@@ -337,6 +340,7 @@ def add_new_patient_typing():
         
 
 def patient_record():
+    # This function should extract already stored data
     #st.write("Find Patient's Record")
     search_name = st.text_input("🔍 Find Patient's Record")
     if st.button("Search"):
