@@ -47,7 +47,7 @@ def add_lab_result(test_name, result):
 
 
     
- def lab_investigations():
+def lab_investigations():
     st.subheader("Lab Investigations")
 
     # Extract test names from the dictionary keys
