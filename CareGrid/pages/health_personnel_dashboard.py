@@ -14,10 +14,12 @@ from pymongo import MongoClient
 # ==== DATABASE SETUP ====
 database_access = st.secrets.uri.conn_str
 client = MongoClient(database_access)
-db = client.Login    #1st Database
-ehr_db = client.EHR  #2nd Database
-credentials_collection = db.Credentials   #1st Collection 
-patient_collection = ehr_db.Patients_Data   #2nd Collection 
+
+db = client.Login    #1st Database for storing login credentials of healthcare workers 
+ehr_db = client["EHR"]  #2nd Database for storing patients' data
+
+credentials_collection = db.Credentials   #1st Collection for storing healthcare workers login credentials 
+patients_data_collection = ehr_db["Patients'_Data"]   #2nd Collection 
 
 
 # ==== SESSION STATE INIT ====
@@ -334,7 +336,7 @@ def add_new_patient_typing():
            #"summaryNoteMedicalImages": 
             }
 
-        result = patient_collection.insert_one(patient_data)
+        result = patient_data_collection.insert_one(patient_data)
         st.success(f"Patient details saved with ID: {result.inserted_id}")
     
         
