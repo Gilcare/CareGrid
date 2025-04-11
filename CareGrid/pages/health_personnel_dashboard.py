@@ -46,19 +46,24 @@ def add_lab_result(test_name, result):
     
 
 
-
-def lab_investigations():
+    
+ def lab_investigations():
     st.subheader("Lab Investigations")
 
-    # Create a DataFrame with test names from the catalog and empty result columns
-    df = pd.DataFrame({"Test Name": lab_tests_full, "Result": [""] * len(lab_tests_full)})
+    # Extract test names from the dictionary keys
+    test_names = list(lab_tests_full.keys())
+
+    # Create DataFrame with empty result column
+    df = pd.DataFrame({
+        "Test Name": test_names,
+        "Result": [""] * len(test_names)
+    })
 
     # Editable table
     edited_df = st.data_editor(df, key="lab_editor", use_container_width=True)
 
     return edited_df.to_dict("records")
-    
-        
+
 
 
 
