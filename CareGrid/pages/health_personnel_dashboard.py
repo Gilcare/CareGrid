@@ -251,16 +251,17 @@ def add_new_patient_details_with_ocr():
 def add_new_patient_typing():
     """Add Patient's Details By Typing"""
     st.subheader("Add Patient Details By Typing")
-    name = st.text_input("Patient Name")
-    age = st.number_input("Age", 0, 120)
-    sex = st.selectbox("Sex", ["Male", "Female"])
-    address = st.text_area("Address")
-    email = st.text_input("Email")
-    phone = st.text_input("phone number")
-    origin = st.text_input("State & LGA/County")
-    occupation = st.text_input("Occupation")
-    religion = st.text_input("Religion")
-    hle = st.text_input("Highest Level of Education")
+    with st.expander("Enter Patient's Details Here"):
+        name = st.text_input("Patient Name")
+        age = st.number_input("Age", 0, 120)
+        sex = st.selectbox("Sex", ["Male", "Female"])
+        address = st.text_area("Address")
+        email = st.text_input("Email")
+        phone = st.text_input("phone number")
+        origin = st.text_input("State & LGA/County")
+        occupation = st.text_input("Occupation")
+        religion = st.text_input("Religion")
+        hle = st.text_input("Highest Level of Education")
 
     clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
     clinic_notes_audio = st.audio_input("Clinical Notes(🎙️ Speak)")
@@ -269,10 +270,10 @@ def add_new_patient_typing():
         # Convert to text - Placeholder
         st.write("Audio transcription feature not implemented.")
 
-    add_lab_investigations, add_medical_images, add_other_details = st.tabs(["Lab Investigation", "Medical Imaging", "Other Details"])
+    add_lab_investigations,add_medical_images,add_other_details = st.tabs(["Lab Investigation", "Medical Imaging", "Other Details"])
     with add_lab_investigations:
         lab_data = lab_investigations()
-
+    
     with add_medical_images:
         # Logic for adding medical images
         with st.expander("Upload & Display Medical Files"):
@@ -319,7 +320,11 @@ def add_new_patient_typing():
                     with st.expander("Physician's Summary Note About Above Image"):
                         st.text_input("Diagnosis, Differentials and Important Findings")
                         # Add logic to save note
-                    
+    with add_other_details:
+        st.subheader("Insurance Details")
+        other_details = st.text_area("")
+
+        
     if st.button("Register Patient Details"):
         patient_data = {
            "personalDetails": {
@@ -338,6 +343,7 @@ def add_new_patient_typing():
            "labInvestigations": lab_data,  # You can append to this dynamically later
            "medicalRecords": [],
            "medicalImages": [],  # File metadata here
+           "otherDetails": other_details
            #"summaryNoteMedicalImages": 
             }
 
@@ -346,12 +352,12 @@ def add_new_patient_typing():
     
         
 
-def patient_record():
+def extract_patient_record():
     # This function should extract already stored data
-    #st.write("Find Patient's Record")
+    #st.write("Find Your Hospital Record")
     search_name = st.text_input("🔍 Find Patient's Record")
     if st.button("Search"):
-        search_result = patient_collection.find_one({"Patient's Name": search_name})
+        search_result = patients_data_collection.find_one({"Patient's Name": search_name})
         if search_result != search_name:
             st.error("Patient's Record Not Found")
     else:
