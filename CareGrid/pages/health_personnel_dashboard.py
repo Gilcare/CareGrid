@@ -19,7 +19,7 @@ db = client.Login    #1st Database for storing login credentials of healthcare w
 ehr_db = client["EHR"]  #2nd Database for storing patients' data
 
 credentials_collection = db.Credentials   #1st Collection for storing healthcare workers login credentials 
-patients_data_collection = ehr_db["Patients'_Data"]   #2nd Collection 
+patient_data_collection = ehr_db["Patients'_Data"]   #2nd Collection 
 
 
 # ==== SESSION STATE INIT ====
@@ -357,7 +357,7 @@ def extract_patient_record():
     #st.write("Find Your Hospital Record")
     search_name = st.text_input("🔍 Find Patient's Record")
     if st.button("Search"):
-        search_result = patients_data_collection.find_one({"Patient's Name": search_name})
+        search_result = patient_data_collection.find_one({"Patient's Name": search_name})
         if search_result != search_name:
             st.error("Patient's Record Not Found")
     else:
