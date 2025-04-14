@@ -7,7 +7,7 @@ lab_tests_full = {
     "Platelet Count": {"unit": "×10⁹/L", "scientific": True},
     "ESR (Erythrocyte Sedimentation Rate)": {"unit": "mm/hr", "scientific": False},
     "Reticulocyte Count": {"unit": "%", "scientific": False},
-
+    "Blood Glucose": {"unit": "mg/dL", "scientific": False},
     # Coagulation
     "Prothrombin Time (PT)": {"unit": "seconds", "scientific": False},
     "Activated Partial Thromboplastin Time (aPTT)": {"unit": "seconds", "scientific": False},
