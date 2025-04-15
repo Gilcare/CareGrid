@@ -5,16 +5,16 @@ import pymongo
 from pymongo import MongoClient
 
 # ==== DATABASE CONNECTION ====
-client = MongoClient("mongodb://localhost:27017/")  # Change URI as needed
-db = client["ehr_app"]
-users_credentials_collection = db["users_credentials"]
+database_access = st.secrets.uri.conn_str
+client = MongoClient(database_access)
 
-# Create unique indexes (run only once or wrap in try/except to avoid duplication error)
-try:
-    users_credentials_collection.create_index("Username", unique=True)
-    users_credentials_collection.create_index("User email", unique=True)
-except pymongo.errors.OperationFailure:
-    pass  # Indexes already exist
+db = client.Login    #1st Database for storing login credentials of healthcare workers 
+ehr_db = client["EHR"]  #2nd Database for storing patients' data
+
+credentials_collection = db.UserCredentials   #1st Collection for storing healthcare workers login credentials 
+patient_data_collection = ehr_db["Patients'_Data"]
+
+
 
 # ==== SESSION STATE ====
 if "user_logged_in" not in st.session_state:
@@ -101,3 +101,11 @@ def user_signup_login():
 
 
 #st.session_state["user_id"] = user_id_access
+
+
+
+def retrieve_hospital_records():
+    search_records = st.text_input("Enter UserID")
+    if st.button("🔍 Search Records"):
+        st.spinner()
+        st.write("Retrieving")
