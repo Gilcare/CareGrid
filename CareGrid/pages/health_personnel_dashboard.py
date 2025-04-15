@@ -44,8 +44,6 @@ def get_lab_results():
 def add_lab_result(test_name, result):
     st.session_state.lab_results.append({"Test Name": test_name, "Result": result})
     
-
-
     
 def lab_investigations():
     st.subheader("Lab Investigations")
@@ -63,8 +61,6 @@ def lab_investigations():
     edited_df = st.data_editor(df, key="lab_editor", use_container_width=True)
 
     return edited_df.to_dict("records")
-
-
 
 
 def add_SI_units_to_lab_form(lab_tests_full):
@@ -94,28 +90,6 @@ def add_SI_units_to_lab_form(lab_tests_full):
             "unit": unit
     }
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # ==== HEALTH WORKER LOGIN & SIGN UP====
 def healthworker_login_form():
