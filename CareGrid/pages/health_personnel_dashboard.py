@@ -331,7 +331,7 @@ def add_new_patient_typing():
             }
 
         result = patient_data_collection.insert_one(patient_data)
-        st.success(f"Patient details saved with ID: {result.inserted_id}")
+        st.success(f"Patient details saved with ID: {result.patient_id}")
     
         
 
