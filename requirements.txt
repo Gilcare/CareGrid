@@ -6,3 +6,4 @@ pillow
 pydicom
 pymongo[srv]
 streamlit
+shortuuid
