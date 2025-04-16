@@ -22,6 +22,10 @@ if "user_logged_in" not in st.session_state:
 if "user_signed_up" not in st.session_state:
     st.session_state["user_signed_up"] = False
 
+
+    
+
+
 # ==== USER ID GENERATOR ====
 def generate_user_id():
     """Generates a unique alphanumeric user ID"""
@@ -109,3 +113,7 @@ def retrieve_hospital_records():
     if st.button("🔍 Search Records"):
         st.spinner()
         st.write("Retrieving")
+
+
+
+
