@@ -492,7 +492,7 @@ def main():
         if new_record.button("Register New Patient", use_container_width = True):
             add_new_patient_typing() #Transfer to a new page
         if retrieve_record.button("Retrieve A Patient Records", use_container_width = True):
-            st.navigate()
+            st.switch_page("pages/search_patient_record.py")
       
         if st.button("Logout"):
             st.session_state['hw_logged_in'] = False
