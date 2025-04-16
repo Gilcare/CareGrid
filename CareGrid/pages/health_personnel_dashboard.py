@@ -6,6 +6,7 @@ import pandas as pd
 import pydicom
 import pymongo
 import random
+import shortuuid
 import streamlit as st
 from pages.lab_tests_catalog import lab_tests_full
 from PIL import Image
@@ -61,6 +62,12 @@ def lab_investigations():
     edited_df = st.data_editor(df, key="lab_editor", use_container_width=True)
 
     return edited_df.to_dict("records")
+
+
+
+def generate_patient_id(x):
+    return f"PT-{shortuuid.ShortUUID().random(length=6)}"
+    
 
 
 def add_SI_units_to_lab_form(lab_tests_full):
@@ -236,7 +243,8 @@ def add_new_patient_typing():
         occupation = st.text_input("Occupation")
         religion = st.text_input("Religion")
         hle = st.text_input("Highest Level of Education")
-
+        patient_id = generate_patient_id(name)
+    
     clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
     clinic_notes_audio = st.audio_input("Clinical Notes(🎙️ Speak)")
     if clinic_notes_audio:
@@ -302,6 +310,7 @@ def add_new_patient_typing():
     if st.button("Register Patient Details"):
         patient_data = {
            "personalDetails": {
+                 "patient_id": patient_id,
                  "name": name,
                  "age": age,
                  "sex": sex,
