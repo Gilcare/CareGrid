@@ -1,3 +1,10 @@
+import streamlit as st
+import pymongo 
+from pymongo import MongoClient
+
+
+
+
 def extract_patient_record():
     st.title("🔍 Patient Health Record Lookup")
 
