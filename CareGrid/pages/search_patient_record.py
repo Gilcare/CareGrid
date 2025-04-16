@@ -1,6 +1,31 @@
+import base64
+import datetime
+import io
+import numpy as np
+import pandas as pd
+import pydicom
+import pymongo
+import random
+import shortuuid
 import streamlit as st
-import pymongo 
+
+from pages.lab_tests_catalog import lab_tests_full
+from PIL import Image
 from pymongo import MongoClient
+
+
+
+# ==== DATABASE SETUP ====
+database_access = st.secrets.uri.conn_str
+client = MongoClient(database_access)
+
+#db = client.Login    #1st Database for storing login credentials of healthcare workers 
+ehr_db = client["EHR"]  #2nd Database for storing patients' data
+
+#credentials_collection = db.Credentials   #1st Collection for storing healthcare workers login credentials 
+patient_data_collection = ehr_db["Patients'_Data"]   #2nd Collection 
+
+
 
 
 
