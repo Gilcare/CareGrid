@@ -408,7 +408,7 @@ def extract_patient_record():
 
 
 
-# --- MAIN APP LOGIC ---
+"""# --- MAIN APP LOGIC ---
 def main():
     st.title("Health Worker Dashboard")
 
@@ -439,3 +439,44 @@ def main():
 
 if __name__ == "__main__":
     main()
+"""
+
+
+
+
+def main():
+    st.title("Health Worker Dashboard")
+
+    if st.session_state.get('hw_logged_in', False):
+        st.success("Welcome, Health Worker!")
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            if st.button("Register New Patient"):
+                st.session_state["view"] = "add_patient"
+
+        with col2:
+            if st.button("Search Patient Records"):
+                st.session_state["view"] = "search_patient"
+
+        if st.session_state.get("view") == "add_patient":
+            add_new_patient_typing()
+
+        elif st.session_state.get("view") == "search_patient":
+            extract_patient_record()
+
+        if st.button("Logout"):
+            st.session_state['hw_logged_in'] = False
+            st.session_state["view"] = None
+            st.rerun()
+
+    elif st.session_state.get('hw_signed_up', False):
+        st.info("Registration successful. Awaiting approval. Please log in once access is granted.")
+        if st.button("Back to Login"):
+            st.session_state['hw_signed_up'] = False
+            st.rerun()
+
+    else:
+        healthworker_login_form()
+        
