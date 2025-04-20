@@ -335,77 +335,6 @@ def add_new_patient_typing():
     
         
 
-def extract_patient_record():
-    # This function should extract already stored data
-    #st.write("Find Your Hospital Record")
-    search_name = st.text_input("🔍 Find Patient's Record")
-    if st.button("Search"):
-        search_result = patient_data_collection.find_one({"Patient's Name": search_name})
-        if search_result != search_name:
-            st.error("Patient's Record Not Found")
-    else:
-        st.write(" ")
-    clinic_notes_text = st.text_area("Clinical Notes(⌨️ Type)")
-    clinic_notes_audio = st.audio_input("Clinical Notes(🎙️ Speak)")
-    if clinic_notes_audio:
-        st.audio(clinic_notes_audio)
-        # Convert to text - Placeholder
-        st.write("Audio transcription feature not implemented.")
-
-    medical_images, lab_results, other_details = st.tabs(["medical_images", "lab_investigation", "other_details"])
-
-    with medical_images:
-        with st.expander("Upload & Display Medical Files"):
-            uploaded_files = st.file_uploader("Upload Medical Files (Images, DICOM, PDFs, etc.)", accept_multiple_files=True)
-
-            if uploaded_files:
-                for uploaded_file in uploaded_files:
-                    st.subheader(f"File: {uploaded_file.name}")
-                    file_type = uploaded_file.type
-                    file_bytes = uploaded_file.read()
-
-                    if file_type.startswith("image/"):
-                        image = Image.open(io.BytesIO(file_bytes))
-                        st.image(image, caption=uploaded_file.name, use_container_width=True)
-
-                    elif file_type == "application/pdf":
-                        base64_pdf = base64.b64encode(file_bytes).decode('utf-8')
-                        pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600px"></iframe>'
-                        st.markdown(pdf_display, unsafe_allow_html=True)
-
-                    elif file_type.startswith("text/"):
-                        content = file_bytes.decode("utf-8")
-                        st.text_area("Text File Contents", content, height=300)
-
-                    elif file_type.startswith("video/"):
-                        st.video(io.BytesIO(file_bytes))
-
-                    elif uploaded_file.name.lower().endswith(".dcm"):
-                        try:
-                            dicom_data = pydicom.dcmread(io.BytesIO(file_bytes))
-                            if 'PixelData' in dicom_data:
-                                image = dicom_data.pixel_array
-                                st.image(image, caption=f"DICOM: {uploaded_file.name}", use_column_width=True)
-                            else:
-                                st.warning("This DICOM file does not contain image data.")
-                            st.json({elem.keyword: str(elem.value) for elem in dicom_data if elem.keyword})
-                        except Exception as e:
-                            st.error(f"Failed to read DICOM file: {e}")
-
-                    else:
-                        st.info(f"Cannot preview this file type directly: {file_type or uploaded_file.name.split('.')[-1]}")
-                        st.download_button(label="Download File", data=file_bytes, file_name=uploaded_file.name)
-
-    with lab_results:
-        lab_df = pd.DataFrame(np.random.randn(10, 5), columns=("col %d" % i for i in range(5)))
-        st.table(lab_df)
-
-    with other_details:
-        st.write("Add Insurance Details Here")
-
-
-
-
 
 # %%%%%%%% Main Extract Function %%%%%%%%
 
@@ -486,13 +415,10 @@ def main():
     if st.session_state['hw_logged_in']:
         st.success("Welcome, Health Worker!")
         
-        #add_new_patient_typing()
-        #patient_re
-        new_record, retrieve_record = st.columns(2, vertical_alignment = "bottom")
-        if new_record.button("Register New Patient", use_container_width = True):
-            add_new_patient_typing() #Transfer to a new page
-        if retrieve_record.button("Retrieve A Patient Records", use_container_width = True):
-            st.switch_page("pages/search_patient_record.py")
+        add_new_patient_typing() #Transfer to a new page?
+        if st.button("Search File"):
+            extract_patient_record()
+        
       
         if st.button("Logout"):
             st.session_state['hw_logged_in'] = False
