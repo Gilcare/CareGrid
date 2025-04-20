@@ -147,7 +147,7 @@ def extract_patient_record():
             lab_data = search_result.get("labInvestigations", [])
             if lab_data:
                 try:
-                    df = pd.DataFrame(lab_data)
+                    df = px_details.DataFrame(lab_data)
                     st.dataframe(df, use_container_width = True)
                 except Exception as e:
                     st.error(f"Unable to display lab results as a table. Error: {e}")
