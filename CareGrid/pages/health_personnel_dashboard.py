@@ -442,3 +442,6 @@ def main():
     else:
         healthworker_login_form()
         
+
+if __name__ == "__main__":
+    main()
