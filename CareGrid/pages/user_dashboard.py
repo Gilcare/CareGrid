@@ -183,10 +183,10 @@ def extract_patient_record():
 
 
 
-def user():
+def main():
     extract_patient_record()
 
 
-if __name__ == "__user__":
-    user()
+if __name__ == "__main__":
+    main()
 
