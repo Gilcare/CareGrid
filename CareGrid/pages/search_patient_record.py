@@ -97,23 +97,4 @@ def extract_patient_record():
 
 
 
-search_input = st.text_input("Search by Name or Patient ID")
-
-if st.button("Search"):
-    if search_input.startswith("P"):  # assuming patient IDs start with "P"
-        results = [patient_data_collection.find_one({"personalDetails.patient_id": search_input})]
-    else:
-        results = list(patient_data_collection.find({"personalDetails.name": search_input}))
-
-    if not results or results[0] is None:
-        st.error("No matching patient records found.")
-    elif len(results) == 1:
-        extract_patient_record(results[0])
-    else:
-        st.warning("Multiple records found. Please select the correct one.")
-        selected = st.selectbox("Select patient", [f"{r['personalDetails']['name']} - {r['personalDetails']['age']} - {r['personalDetails']['patient_id']}" for r in results])
-        chosen_id = selected.split(" - ")[-1]
-        chosen_record = next((r for r in results if r['personalDetails']['patient_id'] == chosen_id), None)
-        if chosen_record:
-            extract_patient_record(chosen_record)
       
