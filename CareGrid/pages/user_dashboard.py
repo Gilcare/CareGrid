@@ -109,11 +109,11 @@ def user_signup_login():
 
 
 def extract_patient_record():
-    st.title("🔍 Patient Health Record Lookup")
+    st.title("📋 Lookup Your Health Record")
 
     search_id = st.text_input("Enter Patient ID")
 
-    if st.button("Search"):
+    if st.button("🔍Search"):
         search_result = patient_data_collection.find_one({"personalDetails.patient_id": search_id})
 
         if search_result is None:
@@ -123,19 +123,19 @@ def extract_patient_record():
 
             # Personal Details
             st.header("👤 Personal Details")
-            pd = search_result.get("personalDetails", {})
+            px_details = search_result.get("personalDetails", {})
             st.markdown(f"""
-            - **Patient ID:** {pd.get("patient_id", "N/A")}
-            - **Name:** {pd.get("name", "N/A")}
-            - **Age:** {pd.get("age", "N/A")}
-            - **Sex:** {pd.get("sex", "N/A")}
-            - **Address:** {pd.get("address", "N/A")}
-            - **Email:** {pd.get("email", "N/A")}
-            - **Phone:** {pd.get("phone", "N/A")}
-            - **Origin:** {pd.get("origin", "N/A")}
-            - **Occupation:** {pd.get("occupation", "N/A")}
-            - **Religion:** {pd.get("religion", "N/A")}
-            - **Education Level:** {pd.get("education", "N/A")}
+            - **Patient ID:** {px_details.get("patient_id", "N/A")}
+            - **Name:** {px_details.get("name", "N/A")}
+            - **Age:** {px_details.get("age", "N/A")}
+            - **Sex:** {px_details.get("sex", "N/A")}
+            - **Address:** {px_details.get("address", "N/A")}
+            - **Email:** {px_details.get("email", "N/A")}
+            - **Phone:** {px_details.get("phone", "N/A")}
+            - **Origin:** {px_details.get("origin", "N/A")}
+            - **Occupation:** {px_details.get("occupation", "N/A")}
+            - **Religion:** {px_details.get("religion", "N/A")}
+            - **Education Level:** {px_details.get("education", "N/A")}
             """)
 
             # Clinical Notes
