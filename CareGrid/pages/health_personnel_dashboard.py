@@ -405,45 +405,7 @@ def extract_patient_record():
             
 
 
-
-
-
-"""# --- MAIN APP LOGIC ---
-def main():
-    st.title("Health Worker Dashboard")
-
-    if st.session_state['hw_logged_in']:
-        st.success("Welcome, Health Worker!")
-        
-        add_new_patient_typing() #Transfer to a new page?
-        if st.button("Search File"):
-            extract_patient_record()
-        
-      
-        if st.button("Logout"):
-            st.session_state['hw_logged_in'] = False
-            st.rerun()
-
-        #add_new_patient_typing()
-
-    elif st.session_state['hw_signed_up']:
-        st.info("Registration successful. Awaiting approval. Please log in once access is granted.")
-        if st.button("Back to Login"):
-            st.session_state['hw_signed_up'] = False
-            st.rerun()
-
-    else:
-        healthworker_login_form()
-
-
-
-if __name__ == "__main__":
-    main()
-"""
-
-
-
-
+#======= MAIN APP LOGIC======
 def main():
     st.title("Health Worker Dashboard")
 
