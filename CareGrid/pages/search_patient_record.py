@@ -108,12 +108,12 @@ if st.button("Search"):
     if not results or results[0] is None:
         st.error("No matching patient records found.")
     elif len(results) == 1:
-        display_patient_record(results[0])
+        extract_patient_record(results[0])
     else:
         st.warning("Multiple records found. Please select the correct one.")
         selected = st.selectbox("Select patient", [f"{r['personalDetails']['name']} - {r['personalDetails']['age']} - {r['personalDetails']['patient_id']}" for r in results])
         chosen_id = selected.split(" - ")[-1]
         chosen_record = next((r for r in results if r['personalDetails']['patient_id'] == chosen_id), None)
         if chosen_record:
-            display_patient_record(chosen_record)
+            extract_patient_record(chosen_record)
       
